@@ -4,12 +4,25 @@
     <title>UWP程序使用代理</title>
     <url>/other/UWP%E7%A8%8B%E5%BA%8F%E4%BD%BF%E7%94%A8%E4%BB%A3%E7%90%86.html</url>
     <content><![CDATA[<p>Windows10的UWP程序默认无法使用本机的代理程序，需要使用checknetisolation.exe命令添加。</p>
-<h2 id="查看已经添加的UWP程序"><a href="#查看已经添加的UWP程序" class="headerlink" title="查看已经添加的UWP程序"></a>查看已经添加的UWP程序</h2><pre><code>checknetisolation.exe loopbackexempt -s</code></pre><h2 id="添加的UWP程序"><a href="#添加的UWP程序" class="headerlink" title="添加的UWP程序"></a>添加的UWP程序</h2><pre><code>checknetisolation.exe loopbackexempt -a -p=&lt;SID&gt;</code></pre><h2 id="查看已经添加的UWP程序-1"><a href="#查看已经添加的UWP程序-1" class="headerlink" title="查看已经添加的UWP程序"></a>查看已经添加的UWP程序</h2><pre><code>checknetisolation.exe loopbackexempt -d -p=&lt;SID&gt;</code></pre><h2 id="程序的SID需要从注册表找查找"><a href="#程序的SID需要从注册表找查找" class="headerlink" title="程序的SID需要从注册表找查找"></a>程序的SID需要从注册表找查找</h2><pre><code>HKEY_CURRENT_USER\Software\Classes\Local Settings\Software\Microsoft\Windows\CurrentVersion\AppContainer\Mappings</code></pre>]]></content>
+<h2 id="查看已经添加的UWP程序"><a href="#查看已经添加的UWP程序" class="headerlink" title="查看已经添加的UWP程序"></a>查看已经添加的UWP程序</h2><pre><code>checknetisolation.exe loopbackexempt -s</code></pre><h2 id="添加新的UWP程序"><a href="#添加新的UWP程序" class="headerlink" title="添加新的UWP程序"></a>添加新的UWP程序</h2><pre><code>checknetisolation.exe loopbackexempt -a -p=&lt;SID&gt;</code></pre><h2 id="删除已经添加的UWP程序"><a href="#删除已经添加的UWP程序" class="headerlink" title="删除已经添加的UWP程序"></a>删除已经添加的UWP程序</h2><pre><code>checknetisolation.exe loopbackexempt -d -p=&lt;SID&gt;</code></pre><h2 id="程序的SID需要从注册表找查找"><a href="#程序的SID需要从注册表找查找" class="headerlink" title="程序的SID需要从注册表找查找"></a>程序的SID需要从注册表找查找</h2><pre><code>HKEY_CURRENT_USER\Software\Classes\Local Settings\Software\Microsoft\Windows\CurrentVersion\AppContainer\Mappings</code></pre>]]></content>
       <categories>
         <category>other</category>
       </categories>
       <tags>
         <tag>uwp</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>test.md</title>
+    <url>/uc/test-md.html</url>
+    <content><![CDATA[<h1 id="test-md"><a href="#test-md" class="headerlink" title="test md"></a>test md</h1><p>abc</p>
+<p>123</p>
+<h1 id="end"><a href="#end" class="headerlink" title="end"></a>end</h1>]]></content>
+      <categories>
+        <category>uc</category>
+      </categories>
+      <tags>
+        <tag>uc</tag>
       </tags>
   </entry>
   <entry>
@@ -68,19 +81,6 @@
       </categories>
       <tags>
         <tag>other</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>test.md</title>
-    <url>/uc/test-md.html</url>
-    <content><![CDATA[<h1 id="test-md"><a href="#test-md" class="headerlink" title="test md"></a>test md</h1><p>abc</p>
-<p>123</p>
-<h1 id="end"><a href="#end" class="headerlink" title="end"></a>end</h1>]]></content>
-      <categories>
-        <category>uc</category>
-      </categories>
-      <tags>
-        <tag>uc</tag>
       </tags>
   </entry>
 </search>
