@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://skmonet.github.io/"/>
-  <updated>2020-04-12T09:42:04.000Z</updated>
+  <updated>2020-04-12T09:54:30.000Z</updated>
   <id>http://skmonet.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>UWP程序使用代理</title>
+    <link href="http://skmonet.github.io/other/UWP%E7%A8%8B%E5%BA%8F%E4%BD%BF%E7%94%A8%E4%BB%A3%E7%90%86.html"/>
+    <id>http://skmonet.github.io/other/UWP%E7%A8%8B%E5%BA%8F%E4%BD%BF%E7%94%A8%E4%BB%A3%E7%90%86.html</id>
+    <published>2020-04-12T09:47:04.000Z</published>
+    <updated>2020-04-12T09:54:30.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>Windows10的UWP程序默认无法使用本机的代理程序，需要使用checknetisolation.exe命令添加。</p><h2 id="查看已经添加的UWP程序"><a href="#查看已经添加的UWP程序" class="headerlink" title="查看已经添加的UWP程序"></a>查看已经添加的UWP程序</h2><pre><code>checknetisolation.exe loopbackexempt -s</code></pre><h2 id="添加的UWP程序"><a href="#添加的UWP程序" class="headerlink" title="添加的UWP程序"></a>添加的UWP程序</h2><pre><code>checknetisolation.exe loopbackexempt -a -p=&lt;SID&gt;</code></pre><h2 id="查看已经添加的UWP程序-1"><a href="#查看已经添加的UWP程序-1" class="headerlink" title="查看已经添加的UWP程序"></a>查看已经添加的UWP程序</h2><pre><code>checknetisolation.exe loopbackexempt -d -p=&lt;SID&gt;</code></pre><h2 id="程序的SID需要从注册表找查找"><a href="#程序的SID需要从注册表找查找" class="headerlink" title="程序的SID需要从注册表找查找"></a>程序的SID需要从注册表找查找</h2><pre><code>HKEY_CURRENT_USER\Software\Classes\Local Settings\Software\Microsoft\Windows\CurrentVersion\AppContainer\Mappings</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;Windows10的UWP程序默认无法使用本机的代理程序，需要使用checknetisolation.exe命令添加。&lt;/p&gt;
+&lt;h2 id=&quot;查看已经添加的UWP程序&quot;&gt;&lt;a href=&quot;#查看已经添加的UWP程序&quot; class=&quot;headerlink&quot; title=&quot;查
+      
+    
+    </summary>
+    
+    
+      <category term="other" scheme="http://skmonet.github.io/categories/other/"/>
+    
+    
+      <category term="uwp" scheme="http://skmonet.github.io/tags/uwp/"/>
+    
+  </entry>
   
   <entry>
     <title>Linux下网卡聚合配置</title>
