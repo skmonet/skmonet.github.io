@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://skmonet.github.io/"/>
-  <updated>2020-04-13T06:04:51.239Z</updated>
+  <updated>2020-04-13T08:13:48.797Z</updated>
   <id>http://skmonet.github.io/</id>
   
   <author>
@@ -17,11 +17,61 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Markdown基础语法</title>
+    <link href="http://skmonet.github.io/other/5c98fe12.html"/>
+    <id>http://skmonet.github.io/other/5c98fe12.html</id>
+    <published>2020-04-13T08:13:05.000Z</published>
+    <updated>2020-04-13T08:13:48.797Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>理解Markdown的基本语法规则，不同编辑器支持的语法规则有部分差异。</p><h1 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h1><p>在文本前面添加#，用于表示标题，#数量代表不同的标题等级，至多可以有6个#。</p><h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><h3 id="三级标题"><a href="#三级标题" class="headerlink" title="三级标题"></a>三级标题</h3><h4 id="四级标题"><a href="#四级标题" class="headerlink" title="四级标题"></a>四级标题</h4><h5 id="五级标题"><a href="#五级标题" class="headerlink" title="五级标题"></a>五级标题</h5><h6 id="六级标题"><a href="#六级标题" class="headerlink" title="六级标题"></a>六级标题</h6><table><thead><tr><th>Markdown</th><th>HTML</th></tr></thead><tbody><tr><td>#      一级标题</td><td>&lt;h1&gt;一级标题&lt;/h1&gt;</td></tr><tr><td>##     二级标题</td><td>&lt;h2&gt;二级标题&lt;/h2&gt;</td></tr><tr><td>###    三级标题</td><td>&lt;h2&gt;三级标题&lt;/h3&gt;</td></tr><tr><td>####   四级标题</td><td>&lt;h2&gt;四级标题&lt;/h4&gt;</td></tr><tr><td>#####  五级标题</td><td>&lt;h2&gt;五级标题&lt;/h5&gt;</td></tr><tr><td>###### 六级标题</td><td>&lt;h2&gt;六级标题&lt;/h6&gt;</td></tr></tbody></table><h2 id="替代语法"><a href="#替代语法" class="headerlink" title="替代语法"></a>替代语法</h2><p>也可以在文本下方添加若干“=”表示一级标题，添加若“-”-表示二级标题</p><h1 id="一级标题-1"><a href="#一级标题-1" class="headerlink" title="一级标题"></a>一级标题</h1><pre><code>一级标题=</code></pre><h2 id="二级标题-1"><a href="#二级标题-1" class="headerlink" title="二级标题"></a>二级标题</h2><pre><code>二级标题-</code></pre><h1 id="段落"><a href="#段落" class="headerlink" title="段落"></a>段落</h1><p>在Markdown中，默认回车不表示换行，必须使用空白行分割两个段落。</p><p>段落一<br>段落二</p><pre><code>段落一段落二</code></pre><p>段落一</p><p>段落二</p><pre><code>段落一段落二</code></pre><h1 id="换行符"><a href="#换行符" class="headerlink" title="换行符"></a>换行符</h1><p>创建换行符（&lt;br&gt;），在末尾添加两个或者多个空格，然后输入回车。换行表示文本在一个段落内。</p><p>第一行  </p><p>(未完待续)</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h1&gt;&lt;p&gt;理解Markdown的基本语法规则，不同编辑器支持的语法规则有部分差异。&lt;/p&gt;
+&lt;h1 id=&quot;标题&quot;&gt;&lt;a href=&quot;#标题&quot; cla
+      
+    
+    </summary>
+    
+    
+      <category term="other" scheme="http://skmonet.github.io/categories/other/"/>
+    
+    
+      <category term="markdown" scheme="http://skmonet.github.io/tags/markdown/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Markdown基础语法1</title>
+    <link href="http://skmonet.github.io/uncategorized/70390601.html"/>
+    <id>http://skmonet.github.io/uncategorized/70390601.html</id>
+    <published>2020-04-13T08:07:46.216Z</published>
+    <updated>2020-04-13T08:09:32.699Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>理解Markdown的基本语法规则，不同编辑器支持的语法规则有部分差异。</p><h1 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h1><p>在文本前面添加#，用于表示标题，#数量代表不同的标题等级，至多可以有6个#。</p><h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><h3 id="三级标题"><a href="#三级标题" class="headerlink" title="三级标题"></a>三级标题</h3><h4 id="四级标题"><a href="#四级标题" class="headerlink" title="四级标题"></a>四级标题</h4><h5 id="五级标题"><a href="#五级标题" class="headerlink" title="五级标题"></a>五级标题</h5><h6 id="六级标题"><a href="#六级标题" class="headerlink" title="六级标题"></a>六级标题</h6><table><thead><tr><th>Markdown</th><th>HTML</th></tr></thead><tbody><tr><td>#      一级标题</td><td>&lt;h1&gt;一级标题&lt;/h1&gt;</td></tr><tr><td>##     二级标题</td><td>&lt;h2&gt;二级标题&lt;/h2&gt;</td></tr><tr><td>###    三级标题</td><td>&lt;h2&gt;三级标题&lt;/h3&gt;</td></tr><tr><td>####   四级标题</td><td>&lt;h2&gt;四级标题&lt;/h4&gt;</td></tr><tr><td>#####  五级标题</td><td>&lt;h2&gt;五级标题&lt;/h5&gt;</td></tr><tr><td>###### 六级标题</td><td>&lt;h2&gt;六级标题&lt;/h6&gt;</td></tr></tbody></table><h2 id="替代语法"><a href="#替代语法" class="headerlink" title="替代语法"></a>替代语法</h2><p>也可以在文本下方添加若干“=”表示一级标题，添加若“-”-表示二级标题</p><h1 id="一级标题-1"><a href="#一级标题-1" class="headerlink" title="一级标题"></a>一级标题</h1><pre><code>一级标题=</code></pre><h2 id="二级标题-1"><a href="#二级标题-1" class="headerlink" title="二级标题"></a>二级标题</h2><pre><code>二级标题-</code></pre><h1 id="段落"><a href="#段落" class="headerlink" title="段落"></a>段落</h1><p>在Markdown中，默认回车不表示换行，必须使用空白行分割两个段落。</p><p>段落一<br>段落二</p><pre><code>段落一段落二</code></pre><p>段落一</p><p>段落二</p><pre><code>段落一段落二</code></pre><h1 id="换行符"><a href="#换行符" class="headerlink" title="换行符"></a>换行符</h1><p>创建换行符（&lt;br&gt;），在末尾添加两个或者多个空格，然后输入回车。换行表示文本在一个段落内。</p><p>第一行  </p><p>(未完待续)</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h1&gt;&lt;p&gt;理解Markdown的基本语法规则，不同编辑器支持的语法规则有部分差异。&lt;/p&gt;
+&lt;h1 id=&quot;标题&quot;&gt;&lt;a href=&quot;#标题&quot; cla
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
     <title>UWP程序使用代理</title>
     <link href="http://skmonet.github.io/other/cab015aa.html"/>
     <id>http://skmonet.github.io/other/cab015aa.html</id>
     <published>2020-04-12T09:47:04.000Z</published>
-    <updated>2020-04-13T06:04:51.239Z</updated>
+    <updated>2020-04-13T08:09:19.280Z</updated>
     
     <content type="html"><![CDATA[<p>Windows10的UWP程序默认无法使用本机的代理程序，需要使用checknetisolation.exe命令添加。</p><h2 id="查看已经添加的UWP程序"><a href="#查看已经添加的UWP程序" class="headerlink" title="查看已经添加的UWP程序"></a>查看已经添加的UWP程序</h2><pre><code>checknetisolation.exe loopbackexempt -s</code></pre><h2 id="添加新的UWP程序"><a href="#添加新的UWP程序" class="headerlink" title="添加新的UWP程序"></a>添加新的UWP程序</h2><pre><code>checknetisolation.exe loopbackexempt -a -p=&lt;SID&gt;</code></pre><h2 id="删除已经添加的UWP程序"><a href="#删除已经添加的UWP程序" class="headerlink" title="删除已经添加的UWP程序"></a>删除已经添加的UWP程序</h2><pre><code>checknetisolation.exe loopbackexempt -d -p=&lt;SID&gt;</code></pre><h2 id="程序的SID需要从注册表找查找"><a href="#程序的SID需要从注册表找查找" class="headerlink" title="程序的SID需要从注册表找查找"></a>程序的SID需要从注册表找查找</h2><pre><code>HKEY_CURRENT_USER\Software\Classes\Local Settings\Software\Microsoft\Windows\CurrentVersion\AppContainer\Mappings</code></pre>]]></content>
     
