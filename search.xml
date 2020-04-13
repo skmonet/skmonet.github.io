@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>UWP程序使用代理</title>
+    <url>/other/UWP%E7%A8%8B%E5%BA%8F%E4%BD%BF%E7%94%A8%E4%BB%A3%E7%90%86.html</url>
+    <content><![CDATA[<p>Windows10的UWP程序默认无法使用本机的代理程序，需要使用checknetisolation.exe命令添加。</p>
+<h2 id="查看已经添加的UWP程序"><a href="#查看已经添加的UWP程序" class="headerlink" title="查看已经添加的UWP程序"></a>查看已经添加的UWP程序</h2><pre><code>checknetisolation.exe loopbackexempt -s</code></pre><h2 id="添加新的UWP程序"><a href="#添加新的UWP程序" class="headerlink" title="添加新的UWP程序"></a>添加新的UWP程序</h2><pre><code>checknetisolation.exe loopbackexempt -a -p=&lt;SID&gt;</code></pre><h2 id="删除已经添加的UWP程序"><a href="#删除已经添加的UWP程序" class="headerlink" title="删除已经添加的UWP程序"></a>删除已经添加的UWP程序</h2><pre><code>checknetisolation.exe loopbackexempt -d -p=&lt;SID&gt;</code></pre><h2 id="程序的SID需要从注册表找查找"><a href="#程序的SID需要从注册表找查找" class="headerlink" title="程序的SID需要从注册表找查找"></a>程序的SID需要从注册表找查找</h2><pre><code>HKEY_CURRENT_USER\Software\Classes\Local Settings\Software\Microsoft\Windows\CurrentVersion\AppContainer\Mappings</code></pre>]]></content>
+      <categories>
+        <category>other</category>
+      </categories>
+      <tags>
+        <tag>uwp</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Linux下网卡聚合配置</title>
     <url>/linux/Linux%E9%85%8D%E7%BD%AE%E6%8E%A5%E5%8F%A3bond.html</url>
     <content><![CDATA[<p>在Linux下配置网卡聚合，并且在OVS中调用，配置步骤如下：</p>
@@ -37,18 +49,6 @@
       </categories>
       <tags>
         <tag>linux-interface-bond</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>UWP程序使用代理</title>
-    <url>/other/UWP%E7%A8%8B%E5%BA%8F%E4%BD%BF%E7%94%A8%E4%BB%A3%E7%90%86.html</url>
-    <content><![CDATA[<p>Windows10的UWP程序默认无法使用本机的代理程序，需要使用checknetisolation.exe命令添加。</p>
-<h2 id="查看已经添加的UWP程序"><a href="#查看已经添加的UWP程序" class="headerlink" title="查看已经添加的UWP程序"></a>查看已经添加的UWP程序</h2><pre><code>checknetisolation.exe loopbackexempt -s</code></pre><h2 id="添加新的UWP程序"><a href="#添加新的UWP程序" class="headerlink" title="添加新的UWP程序"></a>添加新的UWP程序</h2><pre><code>checknetisolation.exe loopbackexempt -a -p=&lt;SID&gt;</code></pre><h2 id="删除已经添加的UWP程序"><a href="#删除已经添加的UWP程序" class="headerlink" title="删除已经添加的UWP程序"></a>删除已经添加的UWP程序</h2><pre><code>checknetisolation.exe loopbackexempt -d -p=&lt;SID&gt;</code></pre><h2 id="程序的SID需要从注册表找查找"><a href="#程序的SID需要从注册表找查找" class="headerlink" title="程序的SID需要从注册表找查找"></a>程序的SID需要从注册表找查找</h2><pre><code>HKEY_CURRENT_USER\Software\Classes\Local Settings\Software\Microsoft\Windows\CurrentVersion\AppContainer\Mappings</code></pre>]]></content>
-      <categories>
-        <category>other</category>
-      </categories>
-      <tags>
-        <tag>uwp</tag>
       </tags>
   </entry>
 </search>
