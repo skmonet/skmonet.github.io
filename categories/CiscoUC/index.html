@@ -15,7 +15,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    Linux下网卡聚合配置 |  深空莫奈
+    CiscoUC |  深空莫奈
   </title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   
@@ -56,213 +56,56 @@ ga('send', 'pageview');
   <div id="app">
     <main class="content on">
       <section class="outer">
-  <article id="post-Linux配置接口bond" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
+  <article class="articles">
     
-    <header class="article-header">
+    
+    <h1 class="page-type-title">CiscoUC</h1>
+    
+    
+  
+  
+  
+  
+  
+  
+  <div class="archives-wrap">
+    <div class="archive-year-wrap">
+      <a href="/archives/2020" class="archive-year">2020</a>
+    </div>
+    <div class="archives">
+      
+      <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <a href="/51a6f497.html" class="archive-article-date">
+  <time datetime="2020-04-15T05:13:58.000Z" itemprop="datePublished">04/15</time>
+</a>
        
-<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  Linux下网卡聚合配置
-</h1>
+<h2 itemprop="name">
+  <a class="archive-article-title" href="/51a6f497.html"
+    >制作Bootable镜像文件</a> 
+</h2>
  
 
     </header>
     
-
-    
-    <div class="article-meta">
-      <a href="/linux/25085233.html" class="article-date">
-  <time datetime="2020-04-12T09:28:25.000Z" itemprop="datePublished">2020-04-12</time>
-</a>
       
   <div class="article-category">
-    <a class="article-category-link" href="/categories/linux/">linux</a>
+    <a class="article-category-link" href="/categories/CiscoUC/">CiscoUC</a>
   </div>
 
-      
-      
-<div class="word_count">
-    <span class="post-time">
-        <span class="post-meta-item-icon">
-            <i class="ri-quill-pen-line"></i>
-            <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">357</span>
-        </span>
-    </span>
-
-    <span class="post-time">
-        &nbsp; | &nbsp;
-        <span class="post-meta-item-icon">
-            <i class="ri-book-open-line"></i>
-            <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">1 分钟</span>
-        </span>
-    </span>
-</div>
-
-      
-    </div>
-    
-
     
     
-    <div class="tocbot"></div>
-
-
-
-
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <p>在Linux下配置网卡聚合，并且在OVS中调用，配置步骤如下：</p>
-<h3 id="1-检查所需要的组件以及信息"><a href="#1-检查所需要的组件以及信息" class="headerlink" title="1.检查所需要的组件以及信息"></a>1.检查所需要的组件以及信息</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ ls -l &#x2F;lib&#x2F;modules&#x2F;&#96;uname -r&#96;&#x2F;kernel&#x2F;drivers&#x2F;net&#x2F;bonding&#x2F;bonding.ko</span><br><span class="line">$ modprobe bonding</span><br><span class="line">$ lsmod | grep bonding</span><br><span class="line">$ dpkg -l | grep ifenslave</span><br></pre></td></tr></table></figure>
-
-<p>如果<code>$ dpkg -l | grep ifenslave</code>没有输出，执行以下命令进行安装：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ apt install ifenslave</span><br></pre></td></tr></table></figure>
-
-<h3 id="2-修改interface文件"><a href="#2-修改interface文件" class="headerlink" title="2.修改interface文件"></a>2.修改interface文件</h3><p>不同服务器做bond配置时接口数量不同，根据实际情况修改</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ vim &#x2F;etc&#x2F;network&#x2F;interfaces</span><br></pre></td></tr></table></figure>
-<p>在每个接口下面添加代码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bond-master bond0</span><br></pre></td></tr></table></figure>
-
-<p>在最后添加bond接口代码，其中<code>bond-mode</code>可以根据实际需求进行求改，详细信息查看<a href="https://help.ubuntu.com/community/UbuntuBonding">这里</a>。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">auto bond0</span><br><span class="line">iface bond0 inet manual</span><br><span class="line">    bond-mode 4</span><br><span class="line">    bond-lacp-rate 1</span><br><span class="line">    bond-miimon 100</span><br><span class="line">    bond-slaves none</span><br><span class="line">    bond-xmit-hash-policy layer3+4</span><br></pre></td></tr></table></figure>
-
-<h3 id="3-修改OVS"><a href="#3-修改OVS" class="headerlink" title="3.修改OVS"></a>3.修改OVS</h3><p>如果已经部署过OVS的bond0，需要先删除，然后重新添加</p>
-<p>删除原有的bond0</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ovs-vsctl del-port br-sdwan bond0</span><br></pre></td></tr></table></figure>
-
-<h3 id="4-启动新bond0"><a href="#4-启动新bond0" class="headerlink" title="4.启动新bond0"></a>4.启动新bond0</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ifup bond0</span><br></pre></td></tr></table></figure>
-<p>此时系统会提示60秒等待接口加入，可以直接ctrl+c暂停。</p>
-<h3 id="5-将接口加入bond0"><a href="#5-将接口加入bond0" class="headerlink" title="5.将接口加入bond0"></a>5.将接口加入bond0</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ifenslave bond0 ens1f0 ens2f0 ens1f1 ens2f1</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>根据站点服务器型号输入接口名称与接口数量</p>
-</blockquote>
-<h3 id="6-查看bond0信息"><a href="#6-查看bond0信息" class="headerlink" title="6.查看bond0信息"></a>6.查看bond0信息</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat &#x2F;proc&#x2F;net&#x2F;bonding&#x2F;bond0</span><br></pre></td></tr></table></figure>
-<p>可以看到加入到bond0的接口数量与模式</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Bonding Mode: IEEE 802.3ad Dynamic link aggregation</span><br><span class="line">Transmit Hash Policy: layer3+4 (1)</span><br><span class="line">port number: 4</span><br></pre></td></tr></table></figure>
-
-<h3 id="7-将新bond0加入到OVS"><a href="#7-将新bond0加入到OVS" class="headerlink" title="7.将新bond0加入到OVS"></a>7.将新bond0加入到OVS</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ovs-vsctl add-port br-sdwan bond0</span><br></pre></td></tr></table></figure>
-      
-      <!-- reward -->
-      
-      <div id="reward-btn">
-        打赏
-      </div>
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-        <div class="declare">
-          <ul class="post-copyright">
-            <li>
-              <i class="ri-copyright-line"></i>
-              <strong>版权声明： </strong>
-              本博客所有文章除特别声明外，著作权归作者所有。转载请注明出处！
-            </li>
-          </ul>
-        </div>
-        
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux-interface-bond/" rel="tag">linux-interface-bond</a></li></ul>
-
-
-    </footer>
-
   </div>
-
-  
-  
-  <nav class="article-nav">
-    
-      <a href="/other/cab015aa.html" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            UWP程序使用代理
-          
-        </div>
-      </a>
-    
-    
-  </nav>
-
-
-  
-
-  
-  
-<!-- valine评论 -->
-<div id="vcomments-box">
-    <div id="vcomments">
-    </div>
-</div>
-<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-<script src='https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
-<script>
-    new Valine({
-        el: '#vcomments',
-        app_id: 'C2z9G9f5v6f1lTJ7sfoc8t56-MdYXbMMI',
-        app_key: 'v2LstwqBOdkHebYSiAayOK6R',
-        path: window.location.pathname,
-        notify: 'false',
-        verify: 'false',
-        avatar: 'retro',
-        placeholder: '说出你的想法~',
-        recordIP: true
-    });
-    const infoEle = document.querySelector('#vcomments .info');
-    if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
-        infoEle.childNodes.forEach(function (item) {
-            item.parentNode.removeChild(item);
-        });
-    }
-</script>
-<style>
-    #vcomments-box {
-        padding: 5px 30px;
-    }
-
-    @media screen and (max-width: 800px) {
-        #vcomments-box {
-            padding: 5px 0px;
-        }
-    }
-
-    #vcomments-box #vcomments {
-        background-color: #fff;
-    }
-
-    .v .vlist .vcard .vh {
-        padding-right: 20px;
-    }
-
-    .v .vlist .vcard {
-        padding-left: 10px;
-    }
-</style>
-
-  
-
-  
-  
-  
-  
-  
-
 </article>
+      
+      
+    </div>
+  </div>
+  
+  
+
+  
 </section>
       <footer class="footer">
   <div class="outer">
@@ -415,24 +258,6 @@ ga('send', 'pageview');
 </script>
 
 
-
-
-<script src="/js/tocbot.min.js"></script>
-
-<script>
-  // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
-  tocbot.init({
-    tocSelector: '.tocbot',
-    contentSelector: '.article-entry',
-    headingSelector: 'h1, h2, h3, h4, h5, h6',
-    hasInnerContainers: true,
-    scrollSmooth: true,
-    scrollContainer: 'main',
-    positionFixedSelector: '.tocbot',
-    positionFixedClass: 'is-position-fixed',
-    fixedSidebarOffset: 'auto'
-  });
-</script>
 
 
 
