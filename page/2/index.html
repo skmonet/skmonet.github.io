@@ -90,7 +90,7 @@ ga('send', 'pageview');
     
     
     
-    <article id="post-思科官方SDWAN基础视频" class="article article-type-post" itemscope
+    <article id="post-制作Bootable镜像文件" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -98,8 +98,8 @@ ga('send', 'pageview');
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/41a7d931.html"
-    >思科官方SD-WAN基础视频</a> 
+  <a class="article-title" href="/51a6f497.html"
+    >制作Bootable镜像文件</a> 
 </h2>
  
 
@@ -108,12 +108,12 @@ ga('send', 'pageview');
 
     
     <div class="article-meta">
-      <a href="/41a7d931.html" class="article-date">
-  <time datetime="2020-04-15T07:56:40.000Z" itemprop="datePublished">2020-04-15</time>
+      <a href="/51a6f497.html" class="article-date">
+  <time datetime="2020-04-15T05:13:58.000Z" itemprop="datePublished">2020-04-15</time>
 </a>
       
   <div class="article-category">
-    <a class="article-category-link" href="/categories/CiscoSDWAN/">CiscoSDWAN</a>
+    <a class="article-category-link" href="/categories/CiscoUC/">CiscoUC</a>
   </div>
 
       
@@ -130,16 +130,14 @@ ga('send', 'pageview');
       
 
       
-      <p>思科官方SD-WAN基础视频。</p>
-<h2 id="1-1-Course-Overview"><a href="#1-1-Course-Overview" class="headerlink" title="1.1 Course Overview"></a>1.1 Course Overview</h2><iframe width="720" height="480" src="https://www.youtube.com/embed/Nd-99l14how?list=PLwExN90Uh-NGwg9VDwBcdOQ16YK8gSGvr" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <p>默认从思科网站下载的CUCM等ISO镜像都是不能启动安装的，需要经过修改，把ISO文件转成可以启动的Boot文件。</p>
+<p>使用的工具：UltraISO</p>
+<h2 id="1-打开ISO镜像"><a href="#1-打开ISO镜像" class="headerlink" title="1.打开ISO镜像"></a>1.打开ISO镜像</h2><p>使用UltraISO打开ISO文件。<br><img src="https://pic.downk.cc/item/5e969f1ec2a9a83be580685c.png" alt="打开iso"></p>
+<h2 id="2-提取文件"><a href="#2-提取文件" class="headerlink" title="2.提取文件"></a>2.提取文件</h2><p>在isolinux.bin文件点击右键，选择提取到，保存到桌面。<br><img src="https://pic.downk.cc/item/5e96a3cfc2a9a83be5836e03.png" alt="提取isolinux.bin"></p>
+<h2 id="3-生成启动信息"><a href="#3-生成启动信息" class="headerlink" title="3.生成启动信息"></a>3.生成启动信息</h2><p>在“启动”菜单下，选择“生成启动信息表”。<br><img src="https://pic.downk.cc/item/5e96a095c2a9a83be58120d8.png" alt="生成启动信息"></p>
+<h2 id="4-加载引导文件"><a href="#4-加载引导文件" class="headerlink" title="4.加载引导文件"></a>4.加载引导文件</h2><p>在“启动”菜单下，选择“加载引导文件”；选择上面导出的isolinux.bin文件。<br><img src="https://pic.downk.cc/item/5e96a0f6c2a9a83be5815e4f.png" alt="引导文件"></p>
+<h2 id="5-保存文件"><a href="#5-保存文件" class="headerlink" title="5.保存文件"></a>5.保存文件</h2><p>最后将文件另存为，启动镜像制作完成。<br><img src="https://pic.downk.cc/item/5e96a14ec2a9a83be5819a9d.png" alt="保存文件"></p>
 
-<h2 id="1-2-What-is-SD-WAN"><a href="#1-2-What-is-SD-WAN" class="headerlink" title="1.2 What is SD WAN"></a>1.2 What is SD WAN</h2><iframe width="720" height="480" src="https://www.youtube.com/embed/Zzw_S2_QX9c?list=PLwExN90Uh-NGwg9VDwBcdOQ16YK8gSGvr" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-<h2 id="2-1-Cisco-SD-WAN-Architecture-Part-1-Evolution-from-a-Single-Device-to-a-Distributed-Architecture"><a href="#2-1-Cisco-SD-WAN-Architecture-Part-1-Evolution-from-a-Single-Device-to-a-Distributed-Architecture" class="headerlink" title="2.1 Cisco SD WAN Architecture, Part 1 Evolution from a Single Device to a Distributed Architecture"></a>2.1 Cisco SD WAN Architecture, Part 1 Evolution from a Single Device to a Distributed Architecture</h2><iframe width="720" height="480" src="https://www.youtube.com/embed/SNsZY7RVWZo?list=PLwExN90Uh-NGwg9VDwBcdOQ16YK8gSGvr" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-<h2 id="2-2-Cisco-SD-WAN-Architecture-Part-2-The-Control-Plane-Bring-Up-Process"><a href="#2-2-Cisco-SD-WAN-Architecture-Part-2-The-Control-Plane-Bring-Up-Process" class="headerlink" title="2.2 Cisco SD WAN Architecture, Part 2 The Control Plane Bring Up Process"></a>2.2 Cisco SD WAN Architecture, Part 2 The Control Plane Bring Up Process</h2><iframe width="720" height="480" src="https://www.youtube.com/embed/uoLi6IQW8nA?list=PLwExN90Uh-NGwg9VDwBcdOQ16YK8gSGvr" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-<h2 id="2-3-Cisco-SD-WAN-Architecture-Part-3-The-Data-Plane-Bring-Up-Process"><a href="#2-3-Cisco-SD-WAN-Architecture-Part-3-The-Data-Plane-Bring-Up-Process" class="headerlink" title="2.3 Cisco SD WAN Architecture, Part 3 The Data Plane Bring Up Process"></a>2.3 Cisco SD WAN Architecture, Part 3 The Data Plane Bring Up Process</h2><iframe width="720" height="480" src="https://www.youtube.com/embed/Pbpeqvo0dFs?list=PLwExN90Uh-NGwg9VDwBcdOQ16YK8gSGvr" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       
       <!-- reward -->
       
@@ -151,7 +149,7 @@ ga('send', 'pageview');
     <footer class="article-footer">
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sdwan/" rel="tag">sdwan</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bootable-iso/" rel="tag">bootable iso</a></li></ul>
 
 
     </footer>
@@ -176,7 +174,7 @@ ga('send', 'pageview');
   
   <nav class="page-nav">
     
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/">下一页</a>
+    <a class="extend prev" rel="prev" href="/">上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/3/">下一页</a>
   </nav>
   
 </section>
