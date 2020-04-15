@@ -1,168 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Linux下网卡聚合配置</title>
-    <url>/25085233.html</url>
-    <content><![CDATA[<p>在Linux下配置网卡聚合，并且在OVS中调用，配置步骤如下：</p>
-<h3 id="1-检查所需要的组件以及信息"><a href="#1-检查所需要的组件以及信息" class="headerlink" title="1.检查所需要的组件以及信息"></a>1.检查所需要的组件以及信息</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ ls -l &#x2F;lib&#x2F;modules&#x2F;&#96;uname -r&#96;&#x2F;kernel&#x2F;drivers&#x2F;net&#x2F;bonding&#x2F;bonding.ko</span><br><span class="line">$ modprobe bonding</span><br><span class="line">$ lsmod | grep bonding</span><br><span class="line">$ dpkg -l | grep ifenslave</span><br></pre></td></tr></table></figure>
-
-<p>如果<code>$ dpkg -l | grep ifenslave</code>没有输出，执行以下命令进行安装：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ apt install ifenslave</span><br></pre></td></tr></table></figure>
-
-<h3 id="2-修改interface文件"><a href="#2-修改interface文件" class="headerlink" title="2.修改interface文件"></a>2.修改interface文件</h3><p>不同服务器做bond配置时接口数量不同，根据实际情况修改</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ vim &#x2F;etc&#x2F;network&#x2F;interfaces</span><br></pre></td></tr></table></figure>
-<p>在每个接口下面添加代码</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">bond-master bond0</span><br></pre></td></tr></table></figure>
-
-<p>在最后添加bond接口代码，其中<code>bond-mode</code>可以根据实际需求进行求改，详细信息查看<a href="https://help.ubuntu.com/community/UbuntuBonding">这里</a>。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">auto bond0</span><br><span class="line">iface bond0 inet manual</span><br><span class="line">    bond-mode 4</span><br><span class="line">    bond-lacp-rate 1</span><br><span class="line">    bond-miimon 100</span><br><span class="line">    bond-slaves none</span><br><span class="line">    bond-xmit-hash-policy layer3+4</span><br></pre></td></tr></table></figure>
-
-<h3 id="3-修改OVS"><a href="#3-修改OVS" class="headerlink" title="3.修改OVS"></a>3.修改OVS</h3><p>如果已经部署过OVS的bond0，需要先删除，然后重新添加</p>
-<p>删除原有的bond0</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ ovs-vsctl del-port br-sdwan bond0</span><br></pre></td></tr></table></figure>
-
-<h3 id="4-启动新bond0"><a href="#4-启动新bond0" class="headerlink" title="4.启动新bond0"></a>4.启动新bond0</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ifup bond0</span><br></pre></td></tr></table></figure>
-<p>此时系统会提示60秒等待接口加入，可以直接ctrl+c暂停。</p>
-<h3 id="5-将接口加入bond0"><a href="#5-将接口加入bond0" class="headerlink" title="5.将接口加入bond0"></a>5.将接口加入bond0</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ifenslave bond0 ens1f0 ens2f0 ens1f1 ens2f1</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>根据站点服务器型号输入接口名称与接口数量</p>
-</blockquote>
-<h3 id="6-查看bond0信息"><a href="#6-查看bond0信息" class="headerlink" title="6.查看bond0信息"></a>6.查看bond0信息</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cat &#x2F;proc&#x2F;net&#x2F;bonding&#x2F;bond0</span><br></pre></td></tr></table></figure>
-<p>可以看到加入到bond0的接口数量与模式</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Bonding Mode: IEEE 802.3ad Dynamic link aggregation</span><br><span class="line">Transmit Hash Policy: layer3+4 (1)</span><br><span class="line">port number: 4</span><br></pre></td></tr></table></figure>
-
-<h3 id="7-将新bond0加入到OVS"><a href="#7-将新bond0加入到OVS" class="headerlink" title="7.将新bond0加入到OVS"></a>7.将新bond0加入到OVS</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ovs-vsctl add-port br-sdwan bond0</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>linux</category>
-      </categories>
-      <tags>
-        <tag>linux-interface-bond</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>UWP程序使用代理</title>
-    <url>/cab015aa.html</url>
-    <content><![CDATA[<p>Windows10的UWP程序默认无法使用本机的代理程序，需要使用checknetisolation.exe命令添加。</p>
-<h2 id="查看已经添加的UWP程序"><a href="#查看已经添加的UWP程序" class="headerlink" title="查看已经添加的UWP程序"></a>查看已经添加的UWP程序</h2><pre><code>checknetisolation.exe loopbackexempt -s</code></pre><h2 id="添加新的UWP程序"><a href="#添加新的UWP程序" class="headerlink" title="添加新的UWP程序"></a>添加新的UWP程序</h2><pre><code>checknetisolation.exe loopbackexempt -a -p=&lt;SID&gt;</code></pre><h2 id="删除已经添加的UWP程序"><a href="#删除已经添加的UWP程序" class="headerlink" title="删除已经添加的UWP程序"></a>删除已经添加的UWP程序</h2><pre><code>checknetisolation.exe loopbackexempt -d -p=&lt;SID&gt;</code></pre><h2 id="程序的SID需要从注册表找查找"><a href="#程序的SID需要从注册表找查找" class="headerlink" title="程序的SID需要从注册表找查找"></a>程序的SID需要从注册表找查找</h2><pre><code>HKEY_CURRENT_USER\Software\Classes\Local Settings\Software\Microsoft\Windows\CurrentVersion\AppContainer\Mappings</code></pre>]]></content>
-      <categories>
-        <category>other</category>
-      </categories>
-      <tags>
-        <tag>uwp</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Markdown扩展语法</title>
-    <url>/c677b245.html</url>
-    <content><![CDATA[<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>本文章主要介绍Markdown的扩展语法，如果对Markdown语法还不了解，请查看<a href="https://skmonet.com/other/5c98fe12.html">Markdown基础语法</a>。</p>
-<h1 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h1><p>添加表格，使用三个或多个连字符（—）创建各列的标题，使用管道（|）分隔各列。</p>
-<table>
-<thead>
-<tr>
-<th>表头一</th>
-<th>表头二</th>
-<th>表头三</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>第一行</td>
-<td>apple</td>
-<td>banana</td>
-</tr>
-<tr>
-<td>第二行</td>
-<td>milk</td>
-<td>coffee</td>
-</tr>
-<tr>
-<td>第三行</td>
-<td>americano</td>
-<td>espresso</td>
-</tr>
-</tbody></table>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">| 表头一 | 表头二 | 表头三 |</span><br><span class="line">| --- | --- | --- |</span><br><span class="line">|第一行|apple|banana|</span><br><span class="line">|第二行|milk|coffee|</span><br><span class="line">|第三行|americano|espresso|</span><br></pre></td></tr></table></figure>
-<h2 id="对齐"><a href="#对齐" class="headerlink" title="对齐"></a>对齐</h2><p>默认表格中的元素都是左对齐，改变对其方式使用冒号（:）；</p>
-<p>:—左对齐，—:右对齐，:—:居中对齐。<br>| 表头一 | 表头二 | 表头三 |<br>| — | —: | :—: |<br>|第一行|apple|banana|<br>|第二行|milk|coffee|<br>|第三行|americano|espresso|</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">| 表头一 | 表头二 | 表头三 |</span><br><span class="line">| --- | ---: | :---: |</span><br><span class="line">|第一行|apple|banana|</span><br><span class="line">|第二行|milk|coffee|</span><br><span class="line">|第三行|americano|espresso|</span><br></pre></td></tr></table></figure>
-
-
-<h1 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h1><p>在基础语法中提到，使用缩进或者制表符可以作为代码块；还可以使用三个反引号（`）或者（~）。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">print(&#39;Hello World!&#39;)</span><br></pre></td></tr></table></figure>
-
-<h2 id="语法高亮"><a href="#语法高亮" class="headerlink" title="语法高亮"></a>语法高亮</h2><p>在代码块第一排反引号后面可以添加语言标识，这样可以让代码块内部的代码以高亮显示。</p>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"firstName"</span>: <span class="string">"John"</span>,</span><br><span class="line">  <span class="attr">"lastName"</span>: <span class="string">"Smith"</span>,</span><br><span class="line">  <span class="attr">"age"</span>: <span class="number">25</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">with</span> open(<span class="string">'text.txt'</span>,encoding=<span class="string">'utf-8'</span>,mode=r) <span class="keyword">as</span> file1:</span><br><span class="line">    data = file1.readlines()</span><br><span class="line">    print(data)</span><br></pre></td></tr></table></figure>
-
-<h1 id="连接到标题ID"><a href="#连接到标题ID" class="headerlink" title="连接到标题ID"></a>连接到标题ID</h1><p>通过<code>[描述](#标题名称)</code>建立一个标题连接，点击可以直接跳转到指定的标题部分。</p>
-<p>跳转到<a href="#表格">表格</a>。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">跳转到[表格](#表格)。</span><br></pre></td></tr></table></figure>
-<h1 id="删除线"><a href="#删除线" class="headerlink" title="删除线"></a>删除线</h1><p>要添加删除线，在文本两端添加两个波浪线（~）。</p>
-<p><del>这个要删除</del>，这个不要删除。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">~~这个要删除~~，这个不要删除。</span><br></pre></td></tr></table></figure>
-
-<h1 id="任务清单"><a href="#任务清单" class="headerlink" title="任务清单"></a>任务清单</h1><p>创建带有复选框的列表清单，在列表内容前添加方括号（[]）；方括号内为空表示未选择，“X”表示已选。</p>
-<ul>
-<li><input checked="" disabled="" type="checkbox"> 第一项</li>
-<li><input disabled="" type="checkbox"> 第二项</li>
-<li><input checked="" disabled="" type="checkbox"> 第一项</li>
-</ul>
-<blockquote>
-<p>不是所有的Markdown程序都支持任务清单语法。</p>
-</blockquote>
-<h1 id="Emoji"><a href="#Emoji" class="headerlink" title="Emoji"></a>Emoji</h1><p>将表情符号添加到Markdown文件的方法有两种：将表情符号复制并粘贴到Markdown格式的文本中，或键入表情符号短代码。</p>
-<p>😃😃😃</p>
-<p>一些Markdown应用程序允许通过键入表情符号短代码来插入表情符号。这些以冒号开头和结尾，并包含表情符号的名称。</p>
-<p>Gone camping! :tent: Be back soon.<br>That is so funny! :joy:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Gone camping! :tent: Be back soon.</span><br><span class="line">That is so funny! :joy:</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>不是所有的Markdown程序都支持Emoji。</p>
-</blockquote>
-<h1 id="自动连接转换"><a href="#自动连接转换" class="headerlink" title="自动连接转换"></a>自动连接转换</h1><p>一般Markdown程序会自动将URL转成连接形式，即使不使用尖角号（&lt;&gt;）,<br>例如：<a href="https://skmonet.com">https://skmonet.com</a></p>
-<p>如果想禁用自动连接转换，使用单引号将连接引起来即可。<br><code>https://skmonet.com</code></p>
-]]></content>
-      <categories>
-        <category>other</category>
-      </categories>
-      <tags>
-        <tag>markdown</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>制作Bootable镜像文件</title>
-    <url>/51a6f497.html</url>
-    <content><![CDATA[<p>默认从思科网站下载的CUCM等ISO镜像都是不能启动安装的，需要经过修改，把ISO文件转成可以启动的Boot文件。</p>
-<p>使用的工具：UltraISO</p>
-<h2 id="1-打开ISO镜像"><a href="#1-打开ISO镜像" class="headerlink" title="1.打开ISO镜像"></a>1.打开ISO镜像</h2><p>使用UltraISO打开ISO文件。<br><img src="https://pic.downk.cc/item/5e969f1ec2a9a83be580685c.png" alt="打开iso"></p>
-<h2 id="2-提取文件"><a href="#2-提取文件" class="headerlink" title="2.提取文件"></a>2.提取文件</h2><p>在isolinux.bin文件点击右键，选择提取到，保存到桌面。<br><img src="https://pic.downk.cc/item/5e96a3cfc2a9a83be5836e03.png" alt="提取isolinux.bin"></p>
-<h2 id="3-生成启动信息"><a href="#3-生成启动信息" class="headerlink" title="3.生成启动信息"></a>3.生成启动信息</h2><p>在“启动”菜单下，选择“生成启动信息表”。<br><img src="https://pic.downk.cc/item/5e96a095c2a9a83be58120d8.png" alt="生成启动信息"></p>
-<h2 id="4-加载引导文件"><a href="#4-加载引导文件" class="headerlink" title="4.加载引导文件"></a>4.加载引导文件</h2><p>在“启动”菜单下，选择“加载引导文件”；选择上面导出的isolinux.bin文件。<br><img src="https://pic.downk.cc/item/5e96a0f6c2a9a83be5815e4f.png" alt="引导文件"></p>
-<h2 id="5-保存文件"><a href="#5-保存文件" class="headerlink" title="5.保存文件"></a>5.保存文件</h2><p>最后将文件另存为，启动镜像制作完成。<br><img src="https://pic.downk.cc/item/5e96a14ec2a9a83be5819a9d.png" alt="保存文件"></p>
-]]></content>
-      <categories>
-        <category>CiscoUC</category>
-      </categories>
-      <tags>
-        <tag>bootable iso</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>思科官方SD-WAN基础视频</title>
-    <url>/41a7d931.html</url>
-    <content><![CDATA[<p>思科官方SD-WAN基础视频。</p>
-<h2 id="1-1-Course-Overview"><a href="#1-1-Course-Overview" class="headerlink" title="1.1 Course Overview"></a>1.1 Course Overview</h2><iframe width="720" height="480" src="https://www.youtube.com/embed/Nd-99l14how?list=PLwExN90Uh-NGwg9VDwBcdOQ16YK8gSGvr" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-<h2 id="1-2-What-is-SD-WAN"><a href="#1-2-What-is-SD-WAN" class="headerlink" title="1.2 What is SD WAN"></a>1.2 What is SD WAN</h2><iframe width="1073" height="604" src="https://www.youtube.com/embed/Zzw_S2_QX9c?list=PLwExN90Uh-NGwg9VDwBcdOQ16YK8gSGvr" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-]]></content>
-      <categories>
-        <category>CiscoSDWAN</category>
-      </categories>
-      <tags>
-        <tag>sdwan</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Markdown基础语法</title>
     <url>/5c98fe12.html</url>
     <content><![CDATA[<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>理解Markdown的基本语法规则，不同编辑器支持的语法规则有部分差异。</p>
@@ -386,6 +224,173 @@
       </categories>
       <tags>
         <tag>markdown</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Linux下网卡聚合配置</title>
+    <url>/25085233.html</url>
+    <content><![CDATA[<p>在Linux下配置网卡聚合，并且在OVS中调用，配置步骤如下：</p>
+<h3 id="1-检查所需要的组件以及信息"><a href="#1-检查所需要的组件以及信息" class="headerlink" title="1.检查所需要的组件以及信息"></a>1.检查所需要的组件以及信息</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ ls -l &#x2F;lib&#x2F;modules&#x2F;&#96;uname -r&#96;&#x2F;kernel&#x2F;drivers&#x2F;net&#x2F;bonding&#x2F;bonding.ko</span><br><span class="line">$ modprobe bonding</span><br><span class="line">$ lsmod | grep bonding</span><br><span class="line">$ dpkg -l | grep ifenslave</span><br></pre></td></tr></table></figure>
+
+<p>如果<code>$ dpkg -l | grep ifenslave</code>没有输出，执行以下命令进行安装：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ apt install ifenslave</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-修改interface文件"><a href="#2-修改interface文件" class="headerlink" title="2.修改interface文件"></a>2.修改interface文件</h3><p>不同服务器做bond配置时接口数量不同，根据实际情况修改</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ vim &#x2F;etc&#x2F;network&#x2F;interfaces</span><br></pre></td></tr></table></figure>
+<p>在每个接口下面添加代码</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">bond-master bond0</span><br></pre></td></tr></table></figure>
+
+<p>在最后添加bond接口代码，其中<code>bond-mode</code>可以根据实际需求进行求改，详细信息查看<a href="https://help.ubuntu.com/community/UbuntuBonding">这里</a>。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">auto bond0</span><br><span class="line">iface bond0 inet manual</span><br><span class="line">    bond-mode 4</span><br><span class="line">    bond-lacp-rate 1</span><br><span class="line">    bond-miimon 100</span><br><span class="line">    bond-slaves none</span><br><span class="line">    bond-xmit-hash-policy layer3+4</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-修改OVS"><a href="#3-修改OVS" class="headerlink" title="3.修改OVS"></a>3.修改OVS</h3><p>如果已经部署过OVS的bond0，需要先删除，然后重新添加</p>
+<p>删除原有的bond0</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ ovs-vsctl del-port br-sdwan bond0</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-启动新bond0"><a href="#4-启动新bond0" class="headerlink" title="4.启动新bond0"></a>4.启动新bond0</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ifup bond0</span><br></pre></td></tr></table></figure>
+<p>此时系统会提示60秒等待接口加入，可以直接ctrl+c暂停。</p>
+<h3 id="5-将接口加入bond0"><a href="#5-将接口加入bond0" class="headerlink" title="5.将接口加入bond0"></a>5.将接口加入bond0</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ifenslave bond0 ens1f0 ens2f0 ens1f1 ens2f1</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>根据站点服务器型号输入接口名称与接口数量</p>
+</blockquote>
+<h3 id="6-查看bond0信息"><a href="#6-查看bond0信息" class="headerlink" title="6.查看bond0信息"></a>6.查看bond0信息</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cat &#x2F;proc&#x2F;net&#x2F;bonding&#x2F;bond0</span><br></pre></td></tr></table></figure>
+<p>可以看到加入到bond0的接口数量与模式</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Bonding Mode: IEEE 802.3ad Dynamic link aggregation</span><br><span class="line">Transmit Hash Policy: layer3+4 (1)</span><br><span class="line">port number: 4</span><br></pre></td></tr></table></figure>
+
+<h3 id="7-将新bond0加入到OVS"><a href="#7-将新bond0加入到OVS" class="headerlink" title="7.将新bond0加入到OVS"></a>7.将新bond0加入到OVS</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ovs-vsctl add-port br-sdwan bond0</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+      <tags>
+        <tag>linux-interface-bond</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Markdown扩展语法</title>
+    <url>/c677b245.html</url>
+    <content><![CDATA[<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>本文章主要介绍Markdown的扩展语法，如果对Markdown语法还不了解，请查看<a href="https://skmonet.com/other/5c98fe12.html">Markdown基础语法</a>。</p>
+<h1 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h1><p>添加表格，使用三个或多个连字符（—）创建各列的标题，使用管道（|）分隔各列。</p>
+<table>
+<thead>
+<tr>
+<th>表头一</th>
+<th>表头二</th>
+<th>表头三</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>第一行</td>
+<td>apple</td>
+<td>banana</td>
+</tr>
+<tr>
+<td>第二行</td>
+<td>milk</td>
+<td>coffee</td>
+</tr>
+<tr>
+<td>第三行</td>
+<td>americano</td>
+<td>espresso</td>
+</tr>
+</tbody></table>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">| 表头一 | 表头二 | 表头三 |</span><br><span class="line">| --- | --- | --- |</span><br><span class="line">|第一行|apple|banana|</span><br><span class="line">|第二行|milk|coffee|</span><br><span class="line">|第三行|americano|espresso|</span><br></pre></td></tr></table></figure>
+<h2 id="对齐"><a href="#对齐" class="headerlink" title="对齐"></a>对齐</h2><p>默认表格中的元素都是左对齐，改变对其方式使用冒号（:）；</p>
+<p>:—左对齐，—:右对齐，:—:居中对齐。<br>| 表头一 | 表头二 | 表头三 |<br>| — | —: | :—: |<br>|第一行|apple|banana|<br>|第二行|milk|coffee|<br>|第三行|americano|espresso|</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">| 表头一 | 表头二 | 表头三 |</span><br><span class="line">| --- | ---: | :---: |</span><br><span class="line">|第一行|apple|banana|</span><br><span class="line">|第二行|milk|coffee|</span><br><span class="line">|第三行|americano|espresso|</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h1><p>在基础语法中提到，使用缩进或者制表符可以作为代码块；还可以使用三个反引号（`）或者（~）。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">print(&#39;Hello World!&#39;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="语法高亮"><a href="#语法高亮" class="headerlink" title="语法高亮"></a>语法高亮</h2><p>在代码块第一排反引号后面可以添加语言标识，这样可以让代码块内部的代码以高亮显示。</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"firstName"</span>: <span class="string">"John"</span>,</span><br><span class="line">  <span class="attr">"lastName"</span>: <span class="string">"Smith"</span>,</span><br><span class="line">  <span class="attr">"age"</span>: <span class="number">25</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">with</span> open(<span class="string">'text.txt'</span>,encoding=<span class="string">'utf-8'</span>,mode=r) <span class="keyword">as</span> file1:</span><br><span class="line">    data = file1.readlines()</span><br><span class="line">    print(data)</span><br></pre></td></tr></table></figure>
+
+<h1 id="连接到标题ID"><a href="#连接到标题ID" class="headerlink" title="连接到标题ID"></a>连接到标题ID</h1><p>通过<code>[描述](#标题名称)</code>建立一个标题连接，点击可以直接跳转到指定的标题部分。</p>
+<p>跳转到<a href="#表格">表格</a>。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">跳转到[表格](#表格)。</span><br></pre></td></tr></table></figure>
+<h1 id="删除线"><a href="#删除线" class="headerlink" title="删除线"></a>删除线</h1><p>要添加删除线，在文本两端添加两个波浪线（~）。</p>
+<p><del>这个要删除</del>，这个不要删除。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">~~这个要删除~~，这个不要删除。</span><br></pre></td></tr></table></figure>
+
+<h1 id="任务清单"><a href="#任务清单" class="headerlink" title="任务清单"></a>任务清单</h1><p>创建带有复选框的列表清单，在列表内容前添加方括号（[]）；方括号内为空表示未选择，“X”表示已选。</p>
+<ul>
+<li><input checked="" disabled="" type="checkbox"> 第一项</li>
+<li><input disabled="" type="checkbox"> 第二项</li>
+<li><input checked="" disabled="" type="checkbox"> 第一项</li>
+</ul>
+<blockquote>
+<p>不是所有的Markdown程序都支持任务清单语法。</p>
+</blockquote>
+<h1 id="Emoji"><a href="#Emoji" class="headerlink" title="Emoji"></a>Emoji</h1><p>将表情符号添加到Markdown文件的方法有两种：将表情符号复制并粘贴到Markdown格式的文本中，或键入表情符号短代码。</p>
+<p>😃😃😃</p>
+<p>一些Markdown应用程序允许通过键入表情符号短代码来插入表情符号。这些以冒号开头和结尾，并包含表情符号的名称。</p>
+<p>Gone camping! :tent: Be back soon.<br>That is so funny! :joy:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Gone camping! :tent: Be back soon.</span><br><span class="line">That is so funny! :joy:</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>不是所有的Markdown程序都支持Emoji。</p>
+</blockquote>
+<h1 id="自动连接转换"><a href="#自动连接转换" class="headerlink" title="自动连接转换"></a>自动连接转换</h1><p>一般Markdown程序会自动将URL转成连接形式，即使不使用尖角号（&lt;&gt;）,<br>例如：<a href="https://skmonet.com">https://skmonet.com</a></p>
+<p>如果想禁用自动连接转换，使用单引号将连接引起来即可。<br><code>https://skmonet.com</code></p>
+]]></content>
+      <categories>
+        <category>other</category>
+      </categories>
+      <tags>
+        <tag>markdown</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>UWP程序使用代理</title>
+    <url>/cab015aa.html</url>
+    <content><![CDATA[<p>Windows10的UWP程序默认无法使用本机的代理程序，需要使用checknetisolation.exe命令添加。</p>
+<h2 id="查看已经添加的UWP程序"><a href="#查看已经添加的UWP程序" class="headerlink" title="查看已经添加的UWP程序"></a>查看已经添加的UWP程序</h2><pre><code>checknetisolation.exe loopbackexempt -s</code></pre><h2 id="添加新的UWP程序"><a href="#添加新的UWP程序" class="headerlink" title="添加新的UWP程序"></a>添加新的UWP程序</h2><pre><code>checknetisolation.exe loopbackexempt -a -p=&lt;SID&gt;</code></pre><h2 id="删除已经添加的UWP程序"><a href="#删除已经添加的UWP程序" class="headerlink" title="删除已经添加的UWP程序"></a>删除已经添加的UWP程序</h2><pre><code>checknetisolation.exe loopbackexempt -d -p=&lt;SID&gt;</code></pre><h2 id="程序的SID需要从注册表找查找"><a href="#程序的SID需要从注册表找查找" class="headerlink" title="程序的SID需要从注册表找查找"></a>程序的SID需要从注册表找查找</h2><pre><code>HKEY_CURRENT_USER\Software\Classes\Local Settings\Software\Microsoft\Windows\CurrentVersion\AppContainer\Mappings</code></pre>]]></content>
+      <categories>
+        <category>other</category>
+      </categories>
+      <tags>
+        <tag>uwp</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>制作Bootable镜像文件</title>
+    <url>/51a6f497.html</url>
+    <content><![CDATA[<p>默认从思科网站下载的CUCM等ISO镜像都是不能启动安装的，需要经过修改，把ISO文件转成可以启动的Boot文件。</p>
+<p>使用的工具：UltraISO</p>
+<h2 id="1-打开ISO镜像"><a href="#1-打开ISO镜像" class="headerlink" title="1.打开ISO镜像"></a>1.打开ISO镜像</h2><p>使用UltraISO打开ISO文件。<br><img src="https://pic.downk.cc/item/5e969f1ec2a9a83be580685c.png" alt="打开iso"></p>
+<h2 id="2-提取文件"><a href="#2-提取文件" class="headerlink" title="2.提取文件"></a>2.提取文件</h2><p>在isolinux.bin文件点击右键，选择提取到，保存到桌面。<br><img src="https://pic.downk.cc/item/5e96a3cfc2a9a83be5836e03.png" alt="提取isolinux.bin"></p>
+<h2 id="3-生成启动信息"><a href="#3-生成启动信息" class="headerlink" title="3.生成启动信息"></a>3.生成启动信息</h2><p>在“启动”菜单下，选择“生成启动信息表”。<br><img src="https://pic.downk.cc/item/5e96a095c2a9a83be58120d8.png" alt="生成启动信息"></p>
+<h2 id="4-加载引导文件"><a href="#4-加载引导文件" class="headerlink" title="4.加载引导文件"></a>4.加载引导文件</h2><p>在“启动”菜单下，选择“加载引导文件”；选择上面导出的isolinux.bin文件。<br><img src="https://pic.downk.cc/item/5e96a0f6c2a9a83be5815e4f.png" alt="引导文件"></p>
+<h2 id="5-保存文件"><a href="#5-保存文件" class="headerlink" title="5.保存文件"></a>5.保存文件</h2><p>最后将文件另存为，启动镜像制作完成。<br><img src="https://pic.downk.cc/item/5e96a14ec2a9a83be5819a9d.png" alt="保存文件"></p>
+]]></content>
+      <categories>
+        <category>CiscoUC</category>
+      </categories>
+      <tags>
+        <tag>bootable iso</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>思科官方SD-WAN基础视频</title>
+    <url>/41a7d931.html</url>
+    <content><![CDATA[<p>思科官方SD-WAN基础视频。</p>
+<h2 id="1-1-Course-Overview"><a href="#1-1-Course-Overview" class="headerlink" title="1.1 Course Overview"></a>1.1 Course Overview</h2><iframe width="720" height="480" src="https://www.youtube.com/embed/Nd-99l14how?list=PLwExN90Uh-NGwg9VDwBcdOQ16YK8gSGvr" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<h2 id="1-2-What-is-SD-WAN"><a href="#1-2-What-is-SD-WAN" class="headerlink" title="1.2 What is SD WAN"></a>1.2 What is SD WAN</h2><iframe width="720" height="480" src="https://www.youtube.com/embed/Zzw_S2_QX9c?list=PLwExN90Uh-NGwg9VDwBcdOQ16YK8gSGvr" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<h2 id="2-1-Cisco-SD-WAN-Architecture-Part-1-Evolution-from-a-Single-Device-to-a-Distributed-Architecture"><a href="#2-1-Cisco-SD-WAN-Architecture-Part-1-Evolution-from-a-Single-Device-to-a-Distributed-Architecture" class="headerlink" title="2.1 Cisco SD WAN Architecture, Part 1 Evolution from a Single Device to a Distributed Architecture"></a>2.1 Cisco SD WAN Architecture, Part 1 Evolution from a Single Device to a Distributed Architecture</h2><iframe width="720" height="480" src="https://www.youtube.com/embed/SNsZY7RVWZo?list=PLwExN90Uh-NGwg9VDwBcdOQ16YK8gSGvr" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<h2 id="2-2-Cisco-SD-WAN-Architecture-Part-2-The-Control-Plane-Bring-Up-Process"><a href="#2-2-Cisco-SD-WAN-Architecture-Part-2-The-Control-Plane-Bring-Up-Process" class="headerlink" title="2.2 Cisco SD WAN Architecture, Part 2 The Control Plane Bring Up Process"></a>2.2 Cisco SD WAN Architecture, Part 2 The Control Plane Bring Up Process</h2><iframe width="720" height="480" src="https://www.youtube.com/embed/uoLi6IQW8nA?list=PLwExN90Uh-NGwg9VDwBcdOQ16YK8gSGvr" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<h2 id="2-3-Cisco-SD-WAN-Architecture-Part-3-The-Data-Plane-Bring-Up-Process"><a href="#2-3-Cisco-SD-WAN-Architecture-Part-3-The-Data-Plane-Bring-Up-Process" class="headerlink" title="2.3 Cisco SD WAN Architecture, Part 3 The Data Plane Bring Up Process"></a>2.3 Cisco SD WAN Architecture, Part 3 The Data Plane Bring Up Process</h2><iframe width="720" height="480" src="https://www.youtube.com/embed/Pbpeqvo0dFs?list=PLwExN90Uh-NGwg9VDwBcdOQ16YK8gSGvr" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>]]></content>
+      <categories>
+        <category>CiscoSDWAN</category>
+      </categories>
+      <tags>
+        <tag>sdwan</tag>
       </tags>
   </entry>
 </search>
