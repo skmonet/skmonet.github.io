@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://skmonet.github.io/"/>
-  <updated>2020-04-17T07:14:58.532Z</updated>
+  <updated>2020-04-17T07:17:32.771Z</updated>
   <id>http://skmonet.github.io/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="http://skmonet.github.io/41402852.html"/>
     <id>http://skmonet.github.io/41402852.html</id>
     <published>2020-04-17T06:53:25.000Z</published>
-    <updated>2020-04-17T07:14:58.532Z</updated>
+    <updated>2020-04-17T07:17:32.771Z</updated>
     
-    <content type="html"><![CDATA[<p>一般情况下我们可以在Phone的Device与Line下配置Calling Search Space（CSS）。CUCM会根据优先级顺序使用CSS中的PT与目标号码进行匹配。</p><h2 id="实验：验证Device与Line下的CSS哪个优先？"><a href="#实验：验证Device与Line下的CSS哪个优先？" class="headerlink" title="实验：验证Device与Line下的CSS哪个优先？"></a>实验：验证Device与Line下的CSS哪个优先？</h2><h3 id="注册两台Phone（可以使用Jabber代替）"><a href="#注册两台Phone（可以使用Jabber代替）" class="headerlink" title="注册两台Phone（可以使用Jabber代替）"></a>注册两台Phone（可以使用Jabber代替）</h3><table><thead><tr><th>Lilei</th><th>DN</th><th>PT</th></tr></thead><tbody><tr><td>Line-1</td><td>2001</td><td>pt1</td></tr><tr><td>Line-2</td><td>2001</td><td>pt2</td></tr><tr><td>Line-3</td><td>2001</td><td>-</td></tr></tbody></table><p>|Hanmeimei| DN |<br>|—|—|—|—|<br>|Line-1|1001|</p><h3 id="CSS与PT配置"><a href="#CSS与PT配置" class="headerlink" title="CSS与PT配置"></a>CSS与PT配置</h3><table><thead><tr><th>CSS</th><th>PT</th></tr></thead><tbody><tr><td>css3</td><td>pt1</td></tr><tr><td>css4</td><td>pt2</td></tr></tbody></table><h3 id="实验一"><a href="#实验一" class="headerlink" title="实验一"></a>实验一</h3><p>Hanmeimei配上Device中的css3，用1001拨打2001。<br>此时Lilei的Line-1会振铃。</p><h3 id="实验二"><a href="#实验二" class="headerlink" title="实验二"></a>实验二</h3><p>Hanmeimei配上Line中的css4，用1001拨打2001。<br>此时Lilei的Line-2会振铃。</p><h3 id="实验三"><a href="#实验三" class="headerlink" title="实验三"></a>实验三</h3><p>只保留Device或者Line上的CSS；修改CSS中的PT为<code>pt1,pt2</code>或者<code>pt2,pt1</code>，再用1001拨打2001。<br>此时CSS中最前面的pt对应的号码会振铃。</p><p>以上试验说明，在Device总，Line下的CSS，优先于Device下的CSS；并且在CSS列表中，靠前的pt优先。</p>]]></content>
+    <content type="html"><![CDATA[<p>一般情况下我们可以在Phone的Device与Line下配置Calling Search Space（CSS）。CUCM会根据优先级顺序使用CSS中的PT与目标号码进行匹配。</p><h2 id="实验：验证Device与Line下的CSS哪个优先？"><a href="#实验：验证Device与Line下的CSS哪个优先？" class="headerlink" title="实验：验证Device与Line下的CSS哪个优先？"></a>实验：验证Device与Line下的CSS哪个优先？</h2><h3 id="注册两台Phone（可以使用Jabber代替）"><a href="#注册两台Phone（可以使用Jabber代替）" class="headerlink" title="注册两台Phone（可以使用Jabber代替）"></a>注册两台Phone（可以使用Jabber代替）</h3><table><thead><tr><th>Lilei</th><th>DN</th><th>PT</th></tr></thead><tbody><tr><td>Line-1</td><td>2001</td><td>pt1</td></tr><tr><td>Line-2</td><td>2001</td><td>pt2</td></tr><tr><td>Line-3</td><td>2001</td><td>-</td></tr></tbody></table><table><thead><tr><th>Hanmeimei</th><th>DN</th></tr></thead><tbody><tr><td>Line-1</td><td>1001</td></tr></tbody></table><h3 id="CSS与PT配置"><a href="#CSS与PT配置" class="headerlink" title="CSS与PT配置"></a>CSS与PT配置</h3><table><thead><tr><th>CSS</th><th>PT</th></tr></thead><tbody><tr><td>css3</td><td>pt1</td></tr><tr><td>css4</td><td>pt2</td></tr></tbody></table><h3 id="实验一"><a href="#实验一" class="headerlink" title="实验一"></a>实验一</h3><p>Hanmeimei配上Device中的css3，用1001拨打2001。<br>此时Lilei的Line-1会振铃。</p><h3 id="实验二"><a href="#实验二" class="headerlink" title="实验二"></a>实验二</h3><p>Hanmeimei配上Line中的css4，用1001拨打2001。<br>此时Lilei的Line-2会振铃。</p><h3 id="实验三"><a href="#实验三" class="headerlink" title="实验三"></a>实验三</h3><p>只保留Device或者Line上的CSS；修改CSS中的PT为<code>pt1,pt2</code>或者<code>pt2,pt1</code>，再用1001拨打2001。<br>此时CSS中最前面的pt对应的号码会振铃。</p><p>以上试验说明，在Device总，Line下的CSS，优先于Device下的CSS；并且在CSS列表中，靠前的pt优先。</p>]]></content>
     
     <summary type="html">
     
