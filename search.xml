@@ -40,6 +40,159 @@
       </tags>
   </entry>
   <entry>
+    <title>Device中CSS的匹配顺序</title>
+    <url>/41402852.html</url>
+    <content><![CDATA[<p>一般情况下我们可以在Phone的Device与Line下配置Calling Search Space（CSS）。CUCM会根据优先级顺序使用CSS中的PT与目标号码进行匹配。</p>
+<h2 id="实验：验证Device与Line下的CSS哪个优先？"><a href="#实验：验证Device与Line下的CSS哪个优先？" class="headerlink" title="实验：验证Device与Line下的CSS哪个优先？"></a>实验：验证Device与Line下的CSS哪个优先？</h2><h3 id="注册两台Phone（可以使用Jabber代替）"><a href="#注册两台Phone（可以使用Jabber代替）" class="headerlink" title="注册两台Phone（可以使用Jabber代替）"></a>注册两台Phone（可以使用Jabber代替）</h3><table>
+<thead>
+<tr>
+<th>Lilei</th>
+<th>DN</th>
+<th>PT</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Line-1</td>
+<td>2001</td>
+<td>pt1</td>
+</tr>
+<tr>
+<td>Line-2</td>
+<td>2001</td>
+<td>pt2</td>
+</tr>
+<tr>
+<td>Line-3</td>
+<td>2001</td>
+<td>-</td>
+</tr>
+</tbody></table>
+<p>|Hanmeimei| DN |<br>|—|—|—|—|<br>|Line-1|1001|</p>
+<h3 id="CSS与PT配置"><a href="#CSS与PT配置" class="headerlink" title="CSS与PT配置"></a>CSS与PT配置</h3><table>
+<thead>
+<tr>
+<th>CSS</th>
+<th>PT</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>css3</td>
+<td>pt1</td>
+</tr>
+<tr>
+<td>css4</td>
+<td>pt2</td>
+</tr>
+</tbody></table>
+<h3 id="实验一"><a href="#实验一" class="headerlink" title="实验一"></a>实验一</h3><p>Hanmeimei配上Device中的css3，用1001拨打2001。<br>此时Lilei的Line-1会振铃。</p>
+<h3 id="实验二"><a href="#实验二" class="headerlink" title="实验二"></a>实验二</h3><p>Hanmeimei配上Line中的css4，用1001拨打2001。<br>此时Lilei的Line-2会振铃。</p>
+<h3 id="实验三"><a href="#实验三" class="headerlink" title="实验三"></a>实验三</h3><p>只保留Device或者Line上的CSS；修改CSS中的PT为<code>pt1,pt2</code>或者<code>pt2,pt1</code>，再用1001拨打2001。<br>此时CSS中最前面的pt对应的号码会振铃。</p>
+<p>以上试验说明，在Device总，Line下的CSS，优先于Device下的CSS；并且在CSS列表中，靠前的pt优先。</p>
+]]></content>
+      <categories>
+        <category>CiscoUC</category>
+      </categories>
+      <tags>
+        <tag>CSS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Markdown扩展语法</title>
+    <url>/c677b245.html</url>
+    <content><![CDATA[<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>本文章主要介绍Markdown的扩展语法，如果对Markdown语法还不了解，请查看<a href="https://skmonet.com/other/5c98fe12.html">Markdown基础语法</a>。</p>
+<h1 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h1><p>添加表格，使用三个或多个连字符（—）创建各列的标题，使用管道（|）分隔各列。</p>
+<table>
+<thead>
+<tr>
+<th>表头一</th>
+<th>表头二</th>
+<th>表头三</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>第一行</td>
+<td>apple</td>
+<td>banana</td>
+</tr>
+<tr>
+<td>第二行</td>
+<td>milk</td>
+<td>coffee</td>
+</tr>
+<tr>
+<td>第三行</td>
+<td>americano</td>
+<td>espresso</td>
+</tr>
+</tbody></table>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">| 表头一 | 表头二 | 表头三 |</span><br><span class="line">| --- | --- | --- |</span><br><span class="line">|第一行|apple|banana|</span><br><span class="line">|第二行|milk|coffee|</span><br><span class="line">|第三行|americano|espresso|</span><br></pre></td></tr></table></figure>
+<h2 id="对齐"><a href="#对齐" class="headerlink" title="对齐"></a>对齐</h2><p>默认表格中的元素都是左对齐，改变对其方式使用冒号（:）；</p>
+<p>:—左对齐，—:右对齐，:—:居中对齐。<br>| 表头一 | 表头二 | 表头三 |<br>| — | —: | :—: |<br>|第一行|apple|banana|<br>|第二行|milk|coffee|<br>|第三行|americano|espresso|</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">| 表头一 | 表头二 | 表头三 |</span><br><span class="line">| --- | ---: | :---: |</span><br><span class="line">|第一行|apple|banana|</span><br><span class="line">|第二行|milk|coffee|</span><br><span class="line">|第三行|americano|espresso|</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h1><p>在基础语法中提到，使用缩进或者制表符可以作为代码块；还可以使用三个反引号（`）或者（~）。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">print(&#39;Hello World!&#39;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="语法高亮"><a href="#语法高亮" class="headerlink" title="语法高亮"></a>语法高亮</h2><p>在代码块第一排反引号后面可以添加语言标识，这样可以让代码块内部的代码以高亮显示。</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"firstName"</span>: <span class="string">"John"</span>,</span><br><span class="line">  <span class="attr">"lastName"</span>: <span class="string">"Smith"</span>,</span><br><span class="line">  <span class="attr">"age"</span>: <span class="number">25</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">with</span> open(<span class="string">'text.txt'</span>,encoding=<span class="string">'utf-8'</span>,mode=r) <span class="keyword">as</span> file1:</span><br><span class="line">    data = file1.readlines()</span><br><span class="line">    print(data)</span><br></pre></td></tr></table></figure>
+
+<h1 id="连接到标题ID"><a href="#连接到标题ID" class="headerlink" title="连接到标题ID"></a>连接到标题ID</h1><p>通过<code>[描述](#标题名称)</code>建立一个标题连接，点击可以直接跳转到指定的标题部分。</p>
+<p>跳转到<a href="#表格">表格</a>。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">跳转到[表格](#表格)。</span><br></pre></td></tr></table></figure>
+<h1 id="删除线"><a href="#删除线" class="headerlink" title="删除线"></a>删除线</h1><p>要添加删除线，在文本两端添加两个波浪线（~）。</p>
+<p><del>这个要删除</del>，这个不要删除。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">~~这个要删除~~，这个不要删除。</span><br></pre></td></tr></table></figure>
+
+<h1 id="任务清单"><a href="#任务清单" class="headerlink" title="任务清单"></a>任务清单</h1><p>创建带有复选框的列表清单，在列表内容前添加方括号（[]）；方括号内为空表示未选择，“X”表示已选。</p>
+<ul>
+<li><input checked="" disabled="" type="checkbox"> 第一项</li>
+<li><input disabled="" type="checkbox"> 第二项</li>
+<li><input checked="" disabled="" type="checkbox"> 第一项</li>
+</ul>
+<blockquote>
+<p>不是所有的Markdown程序都支持任务清单语法。</p>
+</blockquote>
+<h1 id="Emoji"><a href="#Emoji" class="headerlink" title="Emoji"></a>Emoji</h1><p>将表情符号添加到Markdown文件的方法有两种：将表情符号复制并粘贴到Markdown格式的文本中，或键入表情符号短代码。</p>
+<p>😃😃😃</p>
+<p>一些Markdown应用程序允许通过键入表情符号短代码来插入表情符号。这些以冒号开头和结尾，并包含表情符号的名称。</p>
+<p>Gone camping! :tent: Be back soon.<br>That is so funny! :joy:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Gone camping! :tent: Be back soon.</span><br><span class="line">That is so funny! :joy:</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>不是所有的Markdown程序都支持Emoji。</p>
+</blockquote>
+<h1 id="自动连接转换"><a href="#自动连接转换" class="headerlink" title="自动连接转换"></a>自动连接转换</h1><p>一般Markdown程序会自动将URL转成连接形式，即使不使用尖角号（&lt;&gt;）,<br>例如：<a href="https://skmonet.com">https://skmonet.com</a></p>
+<p>如果想禁用自动连接转换，使用单引号将连接引起来即可。<br><code>https://skmonet.com</code></p>
+]]></content>
+      <categories>
+        <category>other</category>
+      </categories>
+      <tags>
+        <tag>markdown</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>制作Bootable镜像文件</title>
+    <url>/51a6f497.html</url>
+    <content><![CDATA[<p>默认从思科网站下载的CUCM等ISO镜像都是不能启动安装的，需要经过修改，把ISO文件转成可以启动的Boot文件。</p>
+<p>使用的工具：UltraISO</p>
+<h2 id="1-打开ISO镜像"><a href="#1-打开ISO镜像" class="headerlink" title="1.打开ISO镜像"></a>1.打开ISO镜像</h2><p>使用UltraISO打开ISO文件。<br><img src="https://pic.downk.cc/item/5e969f1ec2a9a83be580685c.png" alt="打开iso"></p>
+<h2 id="2-提取文件"><a href="#2-提取文件" class="headerlink" title="2.提取文件"></a>2.提取文件</h2><p>在isolinux.bin文件点击右键，选择提取到，保存到桌面。<br><img src="https://pic.downk.cc/item/5e96a3cfc2a9a83be5836e03.png" alt="提取isolinux.bin"></p>
+<h2 id="3-生成启动信息"><a href="#3-生成启动信息" class="headerlink" title="3.生成启动信息"></a>3.生成启动信息</h2><p>在“启动”菜单下，选择“生成启动信息表”。<br><img src="https://pic.downk.cc/item/5e96a095c2a9a83be58120d8.png" alt="生成启动信息"></p>
+<h2 id="4-加载引导文件"><a href="#4-加载引导文件" class="headerlink" title="4.加载引导文件"></a>4.加载引导文件</h2><p>在“启动”菜单下，选择“加载引导文件”；选择上面导出的isolinux.bin文件。<br><img src="https://pic.downk.cc/item/5e96a0f6c2a9a83be5815e4f.png" alt="引导文件"></p>
+<h2 id="5-保存文件"><a href="#5-保存文件" class="headerlink" title="5.保存文件"></a>5.保存文件</h2><p>最后将文件另存为，启动镜像制作完成。<br><img src="https://pic.downk.cc/item/5e96a14ec2a9a83be5819a9d.png" alt="保存文件"></p>
+]]></content>
+      <categories>
+        <category>CiscoUC</category>
+      </categories>
+      <tags>
+        <tag>bootable iso</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Markdown基础语法</title>
     <url>/5c98fe12.html</url>
     <content><![CDATA[<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>理解Markdown的基本语法规则，不同编辑器支持的语法规则有部分差异。</p>
@@ -266,84 +419,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Markdown扩展语法</title>
-    <url>/c677b245.html</url>
-    <content><![CDATA[<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>本文章主要介绍Markdown的扩展语法，如果对Markdown语法还不了解，请查看<a href="https://skmonet.com/other/5c98fe12.html">Markdown基础语法</a>。</p>
-<h1 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h1><p>添加表格，使用三个或多个连字符（—）创建各列的标题，使用管道（|）分隔各列。</p>
-<table>
-<thead>
-<tr>
-<th>表头一</th>
-<th>表头二</th>
-<th>表头三</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>第一行</td>
-<td>apple</td>
-<td>banana</td>
-</tr>
-<tr>
-<td>第二行</td>
-<td>milk</td>
-<td>coffee</td>
-</tr>
-<tr>
-<td>第三行</td>
-<td>americano</td>
-<td>espresso</td>
-</tr>
-</tbody></table>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">| 表头一 | 表头二 | 表头三 |</span><br><span class="line">| --- | --- | --- |</span><br><span class="line">|第一行|apple|banana|</span><br><span class="line">|第二行|milk|coffee|</span><br><span class="line">|第三行|americano|espresso|</span><br></pre></td></tr></table></figure>
-<h2 id="对齐"><a href="#对齐" class="headerlink" title="对齐"></a>对齐</h2><p>默认表格中的元素都是左对齐，改变对其方式使用冒号（:）；</p>
-<p>:—左对齐，—:右对齐，:—:居中对齐。<br>| 表头一 | 表头二 | 表头三 |<br>| — | —: | :—: |<br>|第一行|apple|banana|<br>|第二行|milk|coffee|<br>|第三行|americano|espresso|</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">| 表头一 | 表头二 | 表头三 |</span><br><span class="line">| --- | ---: | :---: |</span><br><span class="line">|第一行|apple|banana|</span><br><span class="line">|第二行|milk|coffee|</span><br><span class="line">|第三行|americano|espresso|</span><br></pre></td></tr></table></figure>
-
-
-<h1 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h1><p>在基础语法中提到，使用缩进或者制表符可以作为代码块；还可以使用三个反引号（`）或者（~）。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">print(&#39;Hello World!&#39;)</span><br></pre></td></tr></table></figure>
-
-<h2 id="语法高亮"><a href="#语法高亮" class="headerlink" title="语法高亮"></a>语法高亮</h2><p>在代码块第一排反引号后面可以添加语言标识，这样可以让代码块内部的代码以高亮显示。</p>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"firstName"</span>: <span class="string">"John"</span>,</span><br><span class="line">  <span class="attr">"lastName"</span>: <span class="string">"Smith"</span>,</span><br><span class="line">  <span class="attr">"age"</span>: <span class="number">25</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">with</span> open(<span class="string">'text.txt'</span>,encoding=<span class="string">'utf-8'</span>,mode=r) <span class="keyword">as</span> file1:</span><br><span class="line">    data = file1.readlines()</span><br><span class="line">    print(data)</span><br></pre></td></tr></table></figure>
-
-<h1 id="连接到标题ID"><a href="#连接到标题ID" class="headerlink" title="连接到标题ID"></a>连接到标题ID</h1><p>通过<code>[描述](#标题名称)</code>建立一个标题连接，点击可以直接跳转到指定的标题部分。</p>
-<p>跳转到<a href="#表格">表格</a>。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">跳转到[表格](#表格)。</span><br></pre></td></tr></table></figure>
-<h1 id="删除线"><a href="#删除线" class="headerlink" title="删除线"></a>删除线</h1><p>要添加删除线，在文本两端添加两个波浪线（~）。</p>
-<p><del>这个要删除</del>，这个不要删除。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">~~这个要删除~~，这个不要删除。</span><br></pre></td></tr></table></figure>
-
-<h1 id="任务清单"><a href="#任务清单" class="headerlink" title="任务清单"></a>任务清单</h1><p>创建带有复选框的列表清单，在列表内容前添加方括号（[]）；方括号内为空表示未选择，“X”表示已选。</p>
-<ul>
-<li><input checked="" disabled="" type="checkbox"> 第一项</li>
-<li><input disabled="" type="checkbox"> 第二项</li>
-<li><input checked="" disabled="" type="checkbox"> 第一项</li>
-</ul>
-<blockquote>
-<p>不是所有的Markdown程序都支持任务清单语法。</p>
-</blockquote>
-<h1 id="Emoji"><a href="#Emoji" class="headerlink" title="Emoji"></a>Emoji</h1><p>将表情符号添加到Markdown文件的方法有两种：将表情符号复制并粘贴到Markdown格式的文本中，或键入表情符号短代码。</p>
-<p>😃😃😃</p>
-<p>一些Markdown应用程序允许通过键入表情符号短代码来插入表情符号。这些以冒号开头和结尾，并包含表情符号的名称。</p>
-<p>Gone camping! :tent: Be back soon.<br>That is so funny! :joy:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Gone camping! :tent: Be back soon.</span><br><span class="line">That is so funny! :joy:</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>不是所有的Markdown程序都支持Emoji。</p>
-</blockquote>
-<h1 id="自动连接转换"><a href="#自动连接转换" class="headerlink" title="自动连接转换"></a>自动连接转换</h1><p>一般Markdown程序会自动将URL转成连接形式，即使不使用尖角号（&lt;&gt;）,<br>例如：<a href="https://skmonet.com">https://skmonet.com</a></p>
-<p>如果想禁用自动连接转换，使用单引号将连接引起来即可。<br><code>https://skmonet.com</code></p>
-]]></content>
-      <categories>
-        <category>other</category>
-      </categories>
-      <tags>
-        <tag>markdown</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>UWP程序使用代理</title>
     <url>/cab015aa.html</url>
     <content><![CDATA[<p>Windows10的UWP程序默认无法使用本机的代理程序，需要使用checknetisolation.exe命令添加。</p>
@@ -353,24 +428,6 @@
       </categories>
       <tags>
         <tag>uwp</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>制作Bootable镜像文件</title>
-    <url>/51a6f497.html</url>
-    <content><![CDATA[<p>默认从思科网站下载的CUCM等ISO镜像都是不能启动安装的，需要经过修改，把ISO文件转成可以启动的Boot文件。</p>
-<p>使用的工具：UltraISO</p>
-<h2 id="1-打开ISO镜像"><a href="#1-打开ISO镜像" class="headerlink" title="1.打开ISO镜像"></a>1.打开ISO镜像</h2><p>使用UltraISO打开ISO文件。<br><img src="https://pic.downk.cc/item/5e969f1ec2a9a83be580685c.png" alt="打开iso"></p>
-<h2 id="2-提取文件"><a href="#2-提取文件" class="headerlink" title="2.提取文件"></a>2.提取文件</h2><p>在isolinux.bin文件点击右键，选择提取到，保存到桌面。<br><img src="https://pic.downk.cc/item/5e96a3cfc2a9a83be5836e03.png" alt="提取isolinux.bin"></p>
-<h2 id="3-生成启动信息"><a href="#3-生成启动信息" class="headerlink" title="3.生成启动信息"></a>3.生成启动信息</h2><p>在“启动”菜单下，选择“生成启动信息表”。<br><img src="https://pic.downk.cc/item/5e96a095c2a9a83be58120d8.png" alt="生成启动信息"></p>
-<h2 id="4-加载引导文件"><a href="#4-加载引导文件" class="headerlink" title="4.加载引导文件"></a>4.加载引导文件</h2><p>在“启动”菜单下，选择“加载引导文件”；选择上面导出的isolinux.bin文件。<br><img src="https://pic.downk.cc/item/5e96a0f6c2a9a83be5815e4f.png" alt="引导文件"></p>
-<h2 id="5-保存文件"><a href="#5-保存文件" class="headerlink" title="5.保存文件"></a>5.保存文件</h2><p>最后将文件另存为，启动镜像制作完成。<br><img src="https://pic.downk.cc/item/5e96a14ec2a9a83be5819a9d.png" alt="保存文件"></p>
-]]></content>
-      <categories>
-        <category>CiscoUC</category>
-      </categories>
-      <tags>
-        <tag>bootable iso</tag>
       </tags>
   </entry>
   <entry>
