@@ -1,6 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Availability and Instant Messaging</title>
+    <url>/d39d3582.html</url>
+    <content><![CDATA[<h1 id="Availability-and-Instant-Messaging概述"><a href="#Availability-and-Instant-Messaging概述" class="headerlink" title="Availability and Instant Messaging概述"></a>Availability and Instant Messaging概述</h1><p>IMP的基本功能是提供用户状态与即时消息功能。<br>用户可以通过状态查看对端用户是否空闲或者忙碌；即时消息提供点到点的消息功能，包含如下功能：</p>
+<ul>
+<li><p>Instant Message Forking<br>当一个用户在多个终端登录账号，收到消息时会在多个终端同时提示，一旦联系人回复，IM and Presence Service只向联系人回复的客户端发送即时信息。（测试只是没有提示，但是会收到消息。）</p>
+</li>
+<li><p>Offline Instant Messaging<br>当用户向未登录的用户发送消息时，IMP会将消息存储在服务器中，当联系人登录后，将消息自动发送给联系人。<br>可以在配置中关闭此功能，关闭后，不能再给未登录的用户发送消息。</p>
+</li>
+<li><p>Broadcast Instant Messaging<br>允许用户同时向多个联系人发送消息。并不是所有的客户端都支持这个功能。</p>
+</li>
+<li><p>Maximum Contact List Size<br>定义用户联系人列表中的最大存储数量；适用于jabber与第三方客户端。</p>
+</li>
+</ul>
+<h1 id="必要服务"><a href="#必要服务" class="headerlink" title="必要服务"></a>必要服务</h1><p>SIP与SIP的即时消息，必须启用以下服务：</p>
+<ul>
+<li>Cisco SIP Proxy</li>
+<li>Cisco Presence Engine</li>
+<li>Cisco XCP Router</li>
+</ul>
+<p>SIP与XMPP的即时消息，必须启用以下服务：</p>
+<ul>
+<li>Cisco SIP Proxy</li>
+<li>Cisco Presence Engine</li>
+<li>Cisco XCP Router</li>
+<li>Cisco XCP Text Conference Manager</li>
+</ul>
+<p>在修改相关配置，根据系统提示，重启服务使配置生效。</p>
+<h1 id="启用状态显示"><a href="#启用状态显示" class="headerlink" title="启用状态显示"></a>启用状态显示</h1><ol>
+<li>登录到IMP，转到 Presence &gt; Settings &gt; Standard Configuration；</li>
+<li>勾选Enable availability sharing复选框，启用状态；</li>
+<li>重启Cisco XCP Router与Cisco Presence Engine服务。</li>
+</ol>
+<h1 id="启用即时消息"><a href="#启用即时消息" class="headerlink" title="启用即时消息"></a>启用即时消息</h1><ol>
+<li>登录到IMP，转到Messaging &gt; Settings；</li>
+<li>勾选Enable instant messaging复选框，启用即时消息；</li>
+<li>（可选）禁用离线消息，勾选Suppress offline instant messaging复选框。</li>
+<li>重启Cisco XCP Router与Cisco Presence Engine服务。</li>
+</ol>
+]]></content>
+      <categories>
+        <category>CiscoUC</category>
+      </categories>
+      <tags>
+        <tag>imp</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Device中CSS的匹配顺序</title>
     <url>/41402852.html</url>
     <content><![CDATA[<p>一般情况下我们可以在Phone的Device与Line下配置Calling Search Space（CSS）。CUCM会根据优先级顺序使用CSS中的PT与目标号码进行匹配。</p>
@@ -66,57 +113,6 @@
       </categories>
       <tags>
         <tag>CSS</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Linux下网卡聚合配置</title>
-    <url>/25085233.html</url>
-    <content><![CDATA[<p>在Linux下配置网卡聚合，并且在OVS中调用，配置步骤如下：</p>
-<h3 id="1-检查所需要的组件以及信息"><a href="#1-检查所需要的组件以及信息" class="headerlink" title="1.检查所需要的组件以及信息"></a>1.检查所需要的组件以及信息</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ ls -l &#x2F;lib&#x2F;modules&#x2F;&#96;uname -r&#96;&#x2F;kernel&#x2F;drivers&#x2F;net&#x2F;bonding&#x2F;bonding.ko</span><br><span class="line">$ modprobe bonding</span><br><span class="line">$ lsmod | grep bonding</span><br><span class="line">$ dpkg -l | grep ifenslave</span><br></pre></td></tr></table></figure>
-
-<p>如果<code>$ dpkg -l | grep ifenslave</code>没有输出，执行以下命令进行安装：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ apt install ifenslave</span><br></pre></td></tr></table></figure>
-
-<h3 id="2-修改interface文件"><a href="#2-修改interface文件" class="headerlink" title="2.修改interface文件"></a>2.修改interface文件</h3><p>不同服务器做bond配置时接口数量不同，根据实际情况修改</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ vim &#x2F;etc&#x2F;network&#x2F;interfaces</span><br></pre></td></tr></table></figure>
-<p>在每个接口下面添加代码</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">bond-master bond0</span><br></pre></td></tr></table></figure>
-
-<p>在最后添加bond接口代码，其中<code>bond-mode</code>可以根据实际需求进行求改，详细信息查看<a href="https://help.ubuntu.com/community/UbuntuBonding">这里</a>。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">auto bond0</span><br><span class="line">iface bond0 inet manual</span><br><span class="line">    bond-mode 4</span><br><span class="line">    bond-lacp-rate 1</span><br><span class="line">    bond-miimon 100</span><br><span class="line">    bond-slaves none</span><br><span class="line">    bond-xmit-hash-policy layer3+4</span><br></pre></td></tr></table></figure>
-
-<h3 id="3-修改OVS"><a href="#3-修改OVS" class="headerlink" title="3.修改OVS"></a>3.修改OVS</h3><p>如果已经部署过OVS的bond0，需要先删除，然后重新添加</p>
-<p>删除原有的bond0</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ ovs-vsctl del-port br-sdwan bond0</span><br></pre></td></tr></table></figure>
-
-<h3 id="4-启动新bond0"><a href="#4-启动新bond0" class="headerlink" title="4.启动新bond0"></a>4.启动新bond0</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ifup bond0</span><br></pre></td></tr></table></figure>
-<p>此时系统会提示60秒等待接口加入，可以直接ctrl+c暂停。</p>
-<h3 id="5-将接口加入bond0"><a href="#5-将接口加入bond0" class="headerlink" title="5.将接口加入bond0"></a>5.将接口加入bond0</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ifenslave bond0 ens1f0 ens2f0 ens1f1 ens2f1</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>根据站点服务器型号输入接口名称与接口数量</p>
-</blockquote>
-<h3 id="6-查看bond0信息"><a href="#6-查看bond0信息" class="headerlink" title="6.查看bond0信息"></a>6.查看bond0信息</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cat &#x2F;proc&#x2F;net&#x2F;bonding&#x2F;bond0</span><br></pre></td></tr></table></figure>
-<p>可以看到加入到bond0的接口数量与模式</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Bonding Mode: IEEE 802.3ad Dynamic link aggregation</span><br><span class="line">Transmit Hash Policy: layer3+4 (1)</span><br><span class="line">port number: 4</span><br></pre></td></tr></table></figure>
-
-<h3 id="7-将新bond0加入到OVS"><a href="#7-将新bond0加入到OVS" class="headerlink" title="7.将新bond0加入到OVS"></a>7.将新bond0加入到OVS</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ovs-vsctl add-port br-sdwan bond0</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>linux</category>
-      </categories>
-      <tags>
-        <tag>linux-interface-bond</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>UWP程序使用代理</title>
-    <url>/cab015aa.html</url>
-    <content><![CDATA[<p>Windows10的UWP程序默认无法使用本机的代理程序，需要使用checknetisolation.exe命令添加。</p>
-<h2 id="查看已经添加的UWP程序"><a href="#查看已经添加的UWP程序" class="headerlink" title="查看已经添加的UWP程序"></a>查看已经添加的UWP程序</h2><pre><code>checknetisolation.exe loopbackexempt -s</code></pre><h2 id="添加新的UWP程序"><a href="#添加新的UWP程序" class="headerlink" title="添加新的UWP程序"></a>添加新的UWP程序</h2><pre><code>checknetisolation.exe loopbackexempt -a -p=&lt;SID&gt;</code></pre><h2 id="删除已经添加的UWP程序"><a href="#删除已经添加的UWP程序" class="headerlink" title="删除已经添加的UWP程序"></a>删除已经添加的UWP程序</h2><pre><code>checknetisolation.exe loopbackexempt -d -p=&lt;SID&gt;</code></pre><h2 id="程序的SID需要从注册表找查找"><a href="#程序的SID需要从注册表找查找" class="headerlink" title="程序的SID需要从注册表找查找"></a>程序的SID需要从注册表找查找</h2><pre><code>HKEY_CURRENT_USER\Software\Classes\Local Settings\Software\Microsoft\Windows\CurrentVersion\AppContainer\Mappings</code></pre>]]></content>
-      <categories>
-        <category>other</category>
-      </categories>
-      <tags>
-        <tag>uwp</tag>
       </tags>
   </entry>
   <entry>
@@ -195,6 +191,45 @@
       </categories>
       <tags>
         <tag>markdown</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Linux下网卡聚合配置</title>
+    <url>/25085233.html</url>
+    <content><![CDATA[<p>在Linux下配置网卡聚合，并且在OVS中调用，配置步骤如下：</p>
+<h3 id="1-检查所需要的组件以及信息"><a href="#1-检查所需要的组件以及信息" class="headerlink" title="1.检查所需要的组件以及信息"></a>1.检查所需要的组件以及信息</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ ls -l &#x2F;lib&#x2F;modules&#x2F;&#96;uname -r&#96;&#x2F;kernel&#x2F;drivers&#x2F;net&#x2F;bonding&#x2F;bonding.ko</span><br><span class="line">$ modprobe bonding</span><br><span class="line">$ lsmod | grep bonding</span><br><span class="line">$ dpkg -l | grep ifenslave</span><br></pre></td></tr></table></figure>
+
+<p>如果<code>$ dpkg -l | grep ifenslave</code>没有输出，执行以下命令进行安装：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ apt install ifenslave</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-修改interface文件"><a href="#2-修改interface文件" class="headerlink" title="2.修改interface文件"></a>2.修改interface文件</h3><p>不同服务器做bond配置时接口数量不同，根据实际情况修改</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ vim &#x2F;etc&#x2F;network&#x2F;interfaces</span><br></pre></td></tr></table></figure>
+<p>在每个接口下面添加代码</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">bond-master bond0</span><br></pre></td></tr></table></figure>
+
+<p>在最后添加bond接口代码，其中<code>bond-mode</code>可以根据实际需求进行求改，详细信息查看<a href="https://help.ubuntu.com/community/UbuntuBonding">这里</a>。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">auto bond0</span><br><span class="line">iface bond0 inet manual</span><br><span class="line">    bond-mode 4</span><br><span class="line">    bond-lacp-rate 1</span><br><span class="line">    bond-miimon 100</span><br><span class="line">    bond-slaves none</span><br><span class="line">    bond-xmit-hash-policy layer3+4</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-修改OVS"><a href="#3-修改OVS" class="headerlink" title="3.修改OVS"></a>3.修改OVS</h3><p>如果已经部署过OVS的bond0，需要先删除，然后重新添加</p>
+<p>删除原有的bond0</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ ovs-vsctl del-port br-sdwan bond0</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-启动新bond0"><a href="#4-启动新bond0" class="headerlink" title="4.启动新bond0"></a>4.启动新bond0</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ifup bond0</span><br></pre></td></tr></table></figure>
+<p>此时系统会提示60秒等待接口加入，可以直接ctrl+c暂停。</p>
+<h3 id="5-将接口加入bond0"><a href="#5-将接口加入bond0" class="headerlink" title="5.将接口加入bond0"></a>5.将接口加入bond0</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ifenslave bond0 ens1f0 ens2f0 ens1f1 ens2f1</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>根据站点服务器型号输入接口名称与接口数量</p>
+</blockquote>
+<h3 id="6-查看bond0信息"><a href="#6-查看bond0信息" class="headerlink" title="6.查看bond0信息"></a>6.查看bond0信息</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cat &#x2F;proc&#x2F;net&#x2F;bonding&#x2F;bond0</span><br></pre></td></tr></table></figure>
+<p>可以看到加入到bond0的接口数量与模式</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Bonding Mode: IEEE 802.3ad Dynamic link aggregation</span><br><span class="line">Transmit Hash Policy: layer3+4 (1)</span><br><span class="line">port number: 4</span><br></pre></td></tr></table></figure>
+
+<h3 id="7-将新bond0加入到OVS"><a href="#7-将新bond0加入到OVS" class="headerlink" title="7.将新bond0加入到OVS"></a>7.将新bond0加入到OVS</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ovs-vsctl add-port br-sdwan bond0</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+      <tags>
+        <tag>linux-interface-bond</tag>
       </tags>
   </entry>
   <entry>
@@ -421,6 +456,18 @@
       </categories>
       <tags>
         <tag>markdown</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>UWP程序使用代理</title>
+    <url>/cab015aa.html</url>
+    <content><![CDATA[<p>Windows10的UWP程序默认无法使用本机的代理程序，需要使用checknetisolation.exe命令添加。</p>
+<h2 id="查看已经添加的UWP程序"><a href="#查看已经添加的UWP程序" class="headerlink" title="查看已经添加的UWP程序"></a>查看已经添加的UWP程序</h2><pre><code>checknetisolation.exe loopbackexempt -s</code></pre><h2 id="添加新的UWP程序"><a href="#添加新的UWP程序" class="headerlink" title="添加新的UWP程序"></a>添加新的UWP程序</h2><pre><code>checknetisolation.exe loopbackexempt -a -p=&lt;SID&gt;</code></pre><h2 id="删除已经添加的UWP程序"><a href="#删除已经添加的UWP程序" class="headerlink" title="删除已经添加的UWP程序"></a>删除已经添加的UWP程序</h2><pre><code>checknetisolation.exe loopbackexempt -d -p=&lt;SID&gt;</code></pre><h2 id="程序的SID需要从注册表找查找"><a href="#程序的SID需要从注册表找查找" class="headerlink" title="程序的SID需要从注册表找查找"></a>程序的SID需要从注册表找查找</h2><pre><code>HKEY_CURRENT_USER\Software\Classes\Local Settings\Software\Microsoft\Windows\CurrentVersion\AppContainer\Mappings</code></pre>]]></content>
+      <categories>
+        <category>other</category>
+      </categories>
+      <tags>
+        <tag>uwp</tag>
       </tags>
   </entry>
   <entry>
