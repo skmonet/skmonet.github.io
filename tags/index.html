@@ -3,7 +3,7 @@
 <script data-ad-client="ca-pub-4966726702729115" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 
 
-<html lang="zh-CN" >
+<html lang="zh-CN">
 
 
 <head>
@@ -17,7 +17,7 @@
   <title>
     tags |  深空莫奈
   </title>
-  <meta name="generator" content="hexo-theme-yilia-plus">
+  <meta name="generator" content="hexo-theme-ayer">
   
   <link rel="shortcut icon" href="/favicon.ico" />
   
@@ -25,10 +25,15 @@
 <link rel="stylesheet" href="/dist/main.css">
 
   
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/css/remixicon.min.css">
+
+  
 <link rel="stylesheet" href="/css/custom.css">
 
   
-  <script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+  
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
   
   
 
@@ -65,27 +70,34 @@ ga('send', 'pageview');
 
       <footer class="footer">
   <div class="outer">
-    <ul class="list-inline">
+    <ul>
       <li>
-        &copy;
+        Copyrights &copy;
         2020
-        深空莫奈
+        <i class="ri-heart-fill heart_icon"></i> 深空莫奈
       </li>
+    </ul>
+    <ul>
       <li>
         
       </li>
     </ul>
-    <ul class="list-inline">
+    <ul>
       <li>
         
         
         <span>
-  <i>PV:<span id="busuanzi_value_page_pv"></span></i>
-  <i>UV:<span id="busuanzi_value_site_uv"></span></i>
+  <span><i class="ri-user-3-fill"></i>访问人数:<span id="busuanzi_value_site_uv"></span></s>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>浏览次数:<span id="busuanzi_value_page_pv"></span></span>
 </span>
         
       </li>
+    </ul>
+    <ul>
       
+    </ul>
+    <ul>
       <li>
         <!-- cnzz统计 -->
         
@@ -167,6 +179,7 @@ ga('send', 'pageview');
         document.querySelector('.sidebar').classList.remove('on');
       }
     </script>
+    <!--动态线条背景-->
     <script type="text/javascript"
     color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js">
     </script>
@@ -201,7 +214,7 @@ ga('send', 'pageview');
 <script>
   try {
     var typed = new Typed("#subtitle", {
-      strings: ['粉霞红绶藕丝裙，青洲步拾兰苕春。', '闲将柳带，细结同心。', '兰露重，柳风斜，满庭堆落花。'],
+      strings: ['留连戏蝶时时舞，自在娇莺恰恰啼。', '玉树歌声泽国春，累累辎重忆亡陈。', '来时浦口云随棹，采罢江边月满楼。'],
       startDelay: 0,
       typeSpeed: 200,
       loop: true,
@@ -344,6 +357,69 @@ ga('send', 'pageview');
 
   
 <script src="/js/clickLove.js"></script>
+
+
+
+<!-- 复制 -->
+
+  
+<link rel="stylesheet" href="/css/clipboard.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
 
 
 

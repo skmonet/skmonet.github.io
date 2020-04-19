@@ -5,9 +5,9 @@
   <subtitle>未有知而不行者，知而不行，只是未知</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://skmonet.github.io/"/>
-  <updated>2020-04-19T13:22:53.375Z</updated>
-  <id>http://skmonet.github.io/</id>
+  <link href="http://skmonet.com/"/>
+  <updated>2020-04-19T15:50:43.589Z</updated>
+  <id>http://skmonet.com/</id>
   
   <author>
     <name>深空莫奈</name>
@@ -18,10 +18,10 @@
   
   <entry>
     <title>Availability and Instant Messaging</title>
-    <link href="http://skmonet.github.io/d39d3582.html"/>
-    <id>http://skmonet.github.io/d39d3582.html</id>
+    <link href="http://skmonet.com/d39d3582.html"/>
+    <id>http://skmonet.com/d39d3582.html</id>
     <published>2020-04-19T08:18:06.000Z</published>
-    <updated>2020-04-19T13:22:53.375Z</updated>
+    <updated>2020-04-19T15:50:43.589Z</updated>
     
     <content type="html"><![CDATA[<h1 id="Availability-and-Instant-Messaging概述"><a href="#Availability-and-Instant-Messaging概述" class="headerlink" title="Availability and Instant Messaging概述"></a>Availability and Instant Messaging概述</h1><p>IMP的基本功能是提供用户状态与即时消息功能。<br>用户可以通过状态查看对端用户是否空闲或者忙碌；即时消息提供点到点的消息功能，包含如下功能：</p><ul><li><p>Instant Message Forking<br>当一个用户在多个终端登录账号，收到消息时会在多个终端同时提示，一旦联系人回复，IM and Presence Service只向联系人回复的客户端发送即时信息。（测试只是没有提示，但是会收到消息。）</p></li><li><p>Offline Instant Messaging<br>当用户向未登录的用户发送消息时，IMP会将消息存储在服务器中，当联系人登录后，将消息自动发送给联系人。<br>可以在配置中关闭此功能，关闭后，不能再给未登录的用户发送消息。</p></li><li><p>Broadcast Instant Messaging<br>允许用户同时向多个联系人发送消息。并不是所有的客户端都支持这个功能。</p></li><li><p>Maximum Contact List Size<br>定义用户联系人列表中的最大存储数量；适用于jabber与第三方客户端。</p></li></ul><h1 id="必要服务"><a href="#必要服务" class="headerlink" title="必要服务"></a>必要服务</h1><p>SIP与SIP的即时消息，必须启用以下服务：</p><ul><li>Cisco SIP Proxy</li><li>Cisco Presence Engine</li><li>Cisco XCP Router</li></ul><p>SIP与XMPP的即时消息，必须启用以下服务：</p><ul><li>Cisco SIP Proxy</li><li>Cisco Presence Engine</li><li>Cisco XCP Router</li><li>Cisco XCP Text Conference Manager</li></ul><p>在修改相关配置，根据系统提示，重启服务使配置生效。</p><h1 id="启用状态显示"><a href="#启用状态显示" class="headerlink" title="启用状态显示"></a>启用状态显示</h1><ol><li>登录到IMP，转到 Presence &gt; Settings &gt; Standard Configuration；</li><li>勾选Enable availability sharing复选框，启用状态；</li><li>重启Cisco XCP Router与Cisco Presence Engine服务。</li></ol><h1 id="启用即时消息"><a href="#启用即时消息" class="headerlink" title="启用即时消息"></a>启用即时消息</h1><ol><li>登录到IMP，转到Messaging &gt; Settings；</li><li>勾选Enable instant messaging复选框，启用即时消息；</li><li>（可选）禁用离线消息，勾选Suppress offline instant messaging复选框。</li><li>重启Cisco XCP Router与Cisco Presence Engine服务。</li></ol>]]></content>
     
@@ -35,17 +35,17 @@
     </summary>
     
     
-      <category term="CiscoUC" scheme="http://skmonet.github.io/categories/CiscoUC/"/>
+      <category term="CiscoUC" scheme="http://skmonet.com/categories/CiscoUC/"/>
     
     
-      <category term="imp" scheme="http://skmonet.github.io/tags/imp/"/>
+      <category term="imp" scheme="http://skmonet.com/tags/imp/"/>
     
   </entry>
   
   <entry>
     <title>Device中CSS的匹配顺序</title>
-    <link href="http://skmonet.github.io/41402852.html"/>
-    <id>http://skmonet.github.io/41402852.html</id>
+    <link href="http://skmonet.com/41402852.html"/>
+    <id>http://skmonet.com/41402852.html</id>
     <published>2020-04-17T06:53:25.000Z</published>
     <updated>2020-04-17T07:17:32.771Z</updated>
     
@@ -62,17 +62,17 @@
     </summary>
     
     
-      <category term="CiscoUC" scheme="http://skmonet.github.io/categories/CiscoUC/"/>
+      <category term="CiscoUC" scheme="http://skmonet.com/categories/CiscoUC/"/>
     
     
-      <category term="CSS" scheme="http://skmonet.github.io/tags/CSS/"/>
+      <category term="CSS" scheme="http://skmonet.com/tags/CSS/"/>
     
   </entry>
   
   <entry>
     <title>思科官方SD-WAN基础视频</title>
-    <link href="http://skmonet.github.io/41a7d931.html"/>
-    <id>http://skmonet.github.io/41a7d931.html</id>
+    <link href="http://skmonet.com/41a7d931.html"/>
+    <id>http://skmonet.com/41a7d931.html</id>
     <published>2020-04-15T07:56:40.000Z</published>
     <updated>2020-04-15T08:46:30.684Z</updated>
     
@@ -89,17 +89,17 @@
     </summary>
     
     
-      <category term="CiscoSDWAN" scheme="http://skmonet.github.io/categories/CiscoSDWAN/"/>
+      <category term="CiscoSDWAN" scheme="http://skmonet.com/categories/CiscoSDWAN/"/>
     
     
-      <category term="sdwan" scheme="http://skmonet.github.io/tags/sdwan/"/>
+      <category term="sdwan" scheme="http://skmonet.com/tags/sdwan/"/>
     
   </entry>
   
   <entry>
     <title>制作Bootable镜像文件</title>
-    <link href="http://skmonet.github.io/51a6f497.html"/>
-    <id>http://skmonet.github.io/51a6f497.html</id>
+    <link href="http://skmonet.com/51a6f497.html"/>
+    <id>http://skmonet.com/51a6f497.html</id>
     <published>2020-04-15T05:13:58.000Z</published>
     <updated>2020-04-15T06:12:48.072Z</updated>
     
@@ -117,17 +117,17 @@
     </summary>
     
     
-      <category term="CiscoUC" scheme="http://skmonet.github.io/categories/CiscoUC/"/>
+      <category term="CiscoUC" scheme="http://skmonet.com/categories/CiscoUC/"/>
     
     
-      <category term="bootable iso" scheme="http://skmonet.github.io/tags/bootable-iso/"/>
+      <category term="bootable iso" scheme="http://skmonet.com/tags/bootable-iso/"/>
     
   </entry>
   
   <entry>
     <title>Markdown扩展语法</title>
-    <link href="http://skmonet.github.io/c677b245.html"/>
-    <id>http://skmonet.github.io/c677b245.html</id>
+    <link href="http://skmonet.com/c677b245.html"/>
+    <id>http://skmonet.com/c677b245.html</id>
     <published>2020-04-14T06:26:19.000Z</published>
     <updated>2020-04-15T03:01:24.466Z</updated>
     
@@ -143,17 +143,17 @@
     </summary>
     
     
-      <category term="other" scheme="http://skmonet.github.io/categories/other/"/>
+      <category term="other" scheme="http://skmonet.com/categories/other/"/>
     
     
-      <category term="markdown" scheme="http://skmonet.github.io/tags/markdown/"/>
+      <category term="markdown" scheme="http://skmonet.com/tags/markdown/"/>
     
   </entry>
   
   <entry>
     <title>Markdown基础语法</title>
-    <link href="http://skmonet.github.io/5c98fe12.html"/>
-    <id>http://skmonet.github.io/5c98fe12.html</id>
+    <link href="http://skmonet.com/5c98fe12.html"/>
+    <id>http://skmonet.com/5c98fe12.html</id>
     <published>2020-04-14T05:30:00.000Z</published>
     <updated>2020-04-14T05:39:22.883Z</updated>
     
@@ -170,17 +170,17 @@
     </summary>
     
     
-      <category term="other" scheme="http://skmonet.github.io/categories/other/"/>
+      <category term="other" scheme="http://skmonet.com/categories/other/"/>
     
     
-      <category term="markdown" scheme="http://skmonet.github.io/tags/markdown/"/>
+      <category term="markdown" scheme="http://skmonet.com/tags/markdown/"/>
     
   </entry>
   
   <entry>
     <title>UWP程序使用代理</title>
-    <link href="http://skmonet.github.io/cab015aa.html"/>
-    <id>http://skmonet.github.io/cab015aa.html</id>
+    <link href="http://skmonet.com/cab015aa.html"/>
+    <id>http://skmonet.com/cab015aa.html</id>
     <published>2020-04-12T09:47:04.000Z</published>
     <updated>2020-04-13T08:09:19.280Z</updated>
     
@@ -197,17 +197,17 @@
     </summary>
     
     
-      <category term="other" scheme="http://skmonet.github.io/categories/other/"/>
+      <category term="other" scheme="http://skmonet.com/categories/other/"/>
     
     
-      <category term="uwp" scheme="http://skmonet.github.io/tags/uwp/"/>
+      <category term="uwp" scheme="http://skmonet.com/tags/uwp/"/>
     
   </entry>
   
   <entry>
     <title>Linux下网卡聚合配置</title>
-    <link href="http://skmonet.github.io/25085233.html"/>
-    <id>http://skmonet.github.io/25085233.html</id>
+    <link href="http://skmonet.com/25085233.html"/>
+    <id>http://skmonet.com/25085233.html</id>
     <published>2020-04-12T09:28:25.000Z</published>
     <updated>2020-04-13T06:04:51.236Z</updated>
     
@@ -224,10 +224,10 @@
     </summary>
     
     
-      <category term="linux" scheme="http://skmonet.github.io/categories/linux/"/>
+      <category term="linux" scheme="http://skmonet.com/categories/linux/"/>
     
     
-      <category term="linux-interface-bond" scheme="http://skmonet.github.io/tags/linux-interface-bond/"/>
+      <category term="linux-interface-bond" scheme="http://skmonet.com/tags/linux-interface-bond/"/>
     
   </entry>
   
