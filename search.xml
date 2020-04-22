@@ -57,9 +57,9 @@
 <li>SQL Server Management Studio<a href="https://aka.ms/ssmsfullsetup" title="SQL Server Management Studio">下载</a></li>
 <li>IM and Presence Service 12.5(1)SU2</li>
 </ul>
-<h1 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h1><h2 id="安装SQL-Server"><a href="#安装SQL-Server" class="headerlink" title="安装SQL Server"></a>安装SQL Server</h2><p>在安装之前关闭Windows防火墙，安装时，关闭Machine Learning Services其他选项默认即可。</p>
-<p><img src="https://pic.downk.cc/item/5e9fd1d3c2a9a83be54a992c.png" alt="turn off firewall"></p>
+<h1 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h1><h2 id="安装SQL-Server"><a href="#安装SQL-Server" class="headerlink" title="安装SQL Server"></a>安装SQL Server</h2><p>在安装之前关闭Windows防火墙，安装时关闭Machine Learning Services其他选项默认即可。</p>
 <p><img src="https://pic.downk.cc/item/5e9fd1d3c2a9a83be54a9931.png" alt="turn off MLS"></p>
+<p><img src="https://pic.downk.cc/item/5e9fd1d3c2a9a83be54a992c.png" alt="turn off firewall"></p>
 <h2 id="安装SQL-Server-Management-Studio"><a href="#安装SQL-Server-Management-Studio" class="headerlink" title="安装SQL Server Management Studio"></a>安装SQL Server Management Studio</h2><p>按照提示默认安装即可。</p>
 <p><img src="https://pic.downk.cc/item/5e9fd4d6c2a9a83be54ccebf.png" alt="SSMS"></p>
 <h2 id="配置SQL-Server"><a href="#配置SQL-Server" class="headerlink" title="配置SQL Server"></a>配置SQL Server</h2><h3 id="创建一个新的Microsoft-SQL-Server数据库"><a href="#创建一个新的Microsoft-SQL-Server数据库" class="headerlink" title="创建一个新的Microsoft SQL Server数据库"></a>创建一个新的Microsoft SQL Server数据库</h3><ol>
@@ -111,20 +111,18 @@
 </li>
 <li><p>修改如下配置；</p>
 <p> <img src="https://pic.downk.cc/item/5e9febb4c2a9a83be55e444a.png" alt="new user"></p>
-<p> <img src="https://pic.downk.cc/item/5e9febb4c2a9a83be55e444d.png" alt="new user"></p>
-<p> <img src="https://pic.downk.cc/item/5e9febb4c2a9a83be55e4451.png" alt="new user"></p>
 <blockquote>
 <p>此处不要勾选”Enforce password expiration”。</p>
 </blockquote>
+<p> <img src="https://pic.downk.cc/item/5e9febb4c2a9a83be55e444d.png" alt="new user"></p>
+<p> <img src="https://pic.downk.cc/item/5e9febb4c2a9a83be55e4451.png" alt="new user"></p>
 </li>
 </ol>
 <h3 id="配置数据库用户所有者权限"><a href="#配置数据库用户所有者权限" class="headerlink" title="配置数据库用户所有者权限"></a>配置数据库用户所有者权限</h3><p>将Microsoft SQL数据库的所有权授予数据库用户。</p>
 <ol>
-<li><p>登录Microsoft SQL Server Management Studio，转到Security，右键Login，选择New Login。</p>
+<li><p>登录Microsoft SQL Server Management Studio，转到Database &gt; Security &gt; Users，右键上一步创建的用户，选择Properties；</p>
 </li>
-<li><p>转到Database &gt; Security &gt; Users，右键上一步创建的用户，选择Properties；</p>
-</li>
-<li><p>选择Membership，在右侧勾选db_owner，保存。</p>
+<li><p>选择Membership，在Role Members中勾选db_owner，保存。</p>
 <p> <img src="https://pic.downk.cc/item/5e9febdbc2a9a83be55e5b3d.png" alt="db owner"></p>
 </li>
 </ol>
@@ -296,81 +294,15 @@
       </tags>
   </entry>
   <entry>
-    <title>Markdown扩展语法</title>
-    <url>/c677b245.html</url>
-    <content><![CDATA[<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>本文章主要介绍Markdown的扩展语法，如果对Markdown语法还不了解，请查看<a href="https://skmonet.com/other/5c98fe12.html">Markdown基础语法</a>。</p>
-<h1 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h1><p>添加表格，使用三个或多个连字符（—）创建各列的标题，使用管道（|）分隔各列。</p>
-<table>
-<thead>
-<tr>
-<th>表头一</th>
-<th>表头二</th>
-<th>表头三</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>第一行</td>
-<td>apple</td>
-<td>banana</td>
-</tr>
-<tr>
-<td>第二行</td>
-<td>milk</td>
-<td>coffee</td>
-</tr>
-<tr>
-<td>第三行</td>
-<td>americano</td>
-<td>espresso</td>
-</tr>
-</tbody></table>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">| 表头一 | 表头二 | 表头三 |</span><br><span class="line">| --- | --- | --- |</span><br><span class="line">|第一行|apple|banana|</span><br><span class="line">|第二行|milk|coffee|</span><br><span class="line">|第三行|americano|espresso|</span><br></pre></td></tr></table></figure>
-<h2 id="对齐"><a href="#对齐" class="headerlink" title="对齐"></a>对齐</h2><p>默认表格中的元素都是左对齐，改变对其方式使用冒号（:）；</p>
-<p>:—左对齐，—:右对齐，:—:居中对齐。<br>| 表头一 | 表头二 | 表头三 |<br>| — | —: | :—: |<br>|第一行|apple|banana|<br>|第二行|milk|coffee|<br>|第三行|americano|espresso|</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">| 表头一 | 表头二 | 表头三 |</span><br><span class="line">| --- | ---: | :---: |</span><br><span class="line">|第一行|apple|banana|</span><br><span class="line">|第二行|milk|coffee|</span><br><span class="line">|第三行|americano|espresso|</span><br></pre></td></tr></table></figure>
-
-
-<h1 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h1><p>在基础语法中提到，使用缩进或者制表符可以作为代码块；还可以使用三个反引号（`）或者（~）。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">print(&#39;Hello World!&#39;)</span><br></pre></td></tr></table></figure>
-
-<h2 id="语法高亮"><a href="#语法高亮" class="headerlink" title="语法高亮"></a>语法高亮</h2><p>在代码块第一排反引号后面可以添加语言标识，这样可以让代码块内部的代码以高亮显示。</p>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"firstName"</span>: <span class="string">"John"</span>,</span><br><span class="line">  <span class="attr">"lastName"</span>: <span class="string">"Smith"</span>,</span><br><span class="line">  <span class="attr">"age"</span>: <span class="number">25</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">with</span> open(<span class="string">'text.txt'</span>,encoding=<span class="string">'utf-8'</span>,mode=r) <span class="keyword">as</span> file1:</span><br><span class="line">    data = file1.readlines()</span><br><span class="line">    print(data)</span><br></pre></td></tr></table></figure>
-
-<h1 id="连接到标题ID"><a href="#连接到标题ID" class="headerlink" title="连接到标题ID"></a>连接到标题ID</h1><p>通过<code>[描述](#标题名称)</code>建立一个标题连接，点击可以直接跳转到指定的标题部分。</p>
-<p>跳转到<a href="#表格">表格</a>。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">跳转到[表格](#表格)。</span><br></pre></td></tr></table></figure>
-<h1 id="删除线"><a href="#删除线" class="headerlink" title="删除线"></a>删除线</h1><p>要添加删除线，在文本两端添加两个波浪线（~）。</p>
-<p><del>这个要删除</del>，这个不要删除。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">~~这个要删除~~，这个不要删除。</span><br></pre></td></tr></table></figure>
-
-<h1 id="任务清单"><a href="#任务清单" class="headerlink" title="任务清单"></a>任务清单</h1><p>创建带有复选框的列表清单，在列表内容前添加方括号（[]）；方括号内为空表示未选择，“X”表示已选。</p>
-<ul>
-<li><input checked="" disabled="" type="checkbox"> 第一项</li>
-<li><input disabled="" type="checkbox"> 第二项</li>
-<li><input checked="" disabled="" type="checkbox"> 第一项</li>
-</ul>
-<blockquote>
-<p>不是所有的Markdown程序都支持任务清单语法。</p>
-</blockquote>
-<h1 id="Emoji"><a href="#Emoji" class="headerlink" title="Emoji"></a>Emoji</h1><p>将表情符号添加到Markdown文件的方法有两种：将表情符号复制并粘贴到Markdown格式的文本中，或键入表情符号短代码。</p>
-<p>😃😃😃</p>
-<p>一些Markdown应用程序允许通过键入表情符号短代码来插入表情符号。这些以冒号开头和结尾，并包含表情符号的名称。</p>
-<p>Gone camping! :tent: Be back soon.<br>That is so funny! :joy:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Gone camping! :tent: Be back soon.</span><br><span class="line">That is so funny! :joy:</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>不是所有的Markdown程序都支持Emoji。</p>
-</blockquote>
-<h1 id="自动连接转换"><a href="#自动连接转换" class="headerlink" title="自动连接转换"></a>自动连接转换</h1><p>一般Markdown程序会自动将URL转成连接形式，即使不使用尖角号（&lt;&gt;）,<br>例如：<a href="https://skmonet.com">https://skmonet.com</a></p>
-<p>如果想禁用自动连接转换，使用单引号将连接引起来即可。<br><code>https://skmonet.com</code></p>
-]]></content>
+    <title>UWP程序使用代理</title>
+    <url>/cab015aa.html</url>
+    <content><![CDATA[<p>Windows10的UWP程序默认无法使用本机的代理程序，需要使用checknetisolation.exe命令添加。</p>
+<h2 id="查看已经添加的UWP程序"><a href="#查看已经添加的UWP程序" class="headerlink" title="查看已经添加的UWP程序"></a>查看已经添加的UWP程序</h2><pre><code>checknetisolation.exe loopbackexempt -s</code></pre><h2 id="添加新的UWP程序"><a href="#添加新的UWP程序" class="headerlink" title="添加新的UWP程序"></a>添加新的UWP程序</h2><pre><code>checknetisolation.exe loopbackexempt -a -p=&lt;SID&gt;</code></pre><h2 id="删除已经添加的UWP程序"><a href="#删除已经添加的UWP程序" class="headerlink" title="删除已经添加的UWP程序"></a>删除已经添加的UWP程序</h2><pre><code>checknetisolation.exe loopbackexempt -d -p=&lt;SID&gt;</code></pre><h2 id="程序的SID需要从注册表找查找"><a href="#程序的SID需要从注册表找查找" class="headerlink" title="程序的SID需要从注册表找查找"></a>程序的SID需要从注册表找查找</h2><pre><code>HKEY_CURRENT_USER\Software\Classes\Local Settings\Software\Microsoft\Windows\CurrentVersion\AppContainer\Mappings</code></pre>]]></content>
       <categories>
         <category>other</category>
       </categories>
       <tags>
-        <tag>markdown</tag>
+        <tag>uwp</tag>
       </tags>
   </entry>
   <entry>
@@ -600,6 +532,18 @@
       </tags>
   </entry>
   <entry>
+    <title>思科官方SD-WAN基础视频</title>
+    <url>/41a7d931.html</url>
+    <content><![CDATA[<p>思科官方SD-WAN基础视频（A-SDW-START），其全部视频请查看视频列表。</p>
+<iframe width="720" height="480" src="https://www.youtube.com/embed/Nd-99l14how?list=PLwExN90Uh-NGwg9VDwBcdOQ16YK8gSGvr" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>]]></content>
+      <categories>
+        <category>CiscoSDWAN</category>
+      </categories>
+      <tags>
+        <tag>sdwan</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>制作Bootable镜像文件</title>
     <url>/51a6f497.html</url>
     <content><![CDATA[<p>默认从思科网站下载的CUCM等ISO镜像都是不能启动安装的，需要经过修改，把ISO文件转成可以启动的Boot文件。</p>
@@ -618,27 +562,81 @@
       </tags>
   </entry>
   <entry>
-    <title>思科官方SD-WAN基础视频</title>
-    <url>/41a7d931.html</url>
-    <content><![CDATA[<p>思科官方SD-WAN基础视频（A-SDW-START），其全部视频请查看视频列表。</p>
-<iframe width="720" height="480" src="https://www.youtube.com/embed/Nd-99l14how?list=PLwExN90Uh-NGwg9VDwBcdOQ16YK8gSGvr" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>]]></content>
-      <categories>
-        <category>CiscoSDWAN</category>
-      </categories>
-      <tags>
-        <tag>sdwan</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>UWP程序使用代理</title>
-    <url>/cab015aa.html</url>
-    <content><![CDATA[<p>Windows10的UWP程序默认无法使用本机的代理程序，需要使用checknetisolation.exe命令添加。</p>
-<h2 id="查看已经添加的UWP程序"><a href="#查看已经添加的UWP程序" class="headerlink" title="查看已经添加的UWP程序"></a>查看已经添加的UWP程序</h2><pre><code>checknetisolation.exe loopbackexempt -s</code></pre><h2 id="添加新的UWP程序"><a href="#添加新的UWP程序" class="headerlink" title="添加新的UWP程序"></a>添加新的UWP程序</h2><pre><code>checknetisolation.exe loopbackexempt -a -p=&lt;SID&gt;</code></pre><h2 id="删除已经添加的UWP程序"><a href="#删除已经添加的UWP程序" class="headerlink" title="删除已经添加的UWP程序"></a>删除已经添加的UWP程序</h2><pre><code>checknetisolation.exe loopbackexempt -d -p=&lt;SID&gt;</code></pre><h2 id="程序的SID需要从注册表找查找"><a href="#程序的SID需要从注册表找查找" class="headerlink" title="程序的SID需要从注册表找查找"></a>程序的SID需要从注册表找查找</h2><pre><code>HKEY_CURRENT_USER\Software\Classes\Local Settings\Software\Microsoft\Windows\CurrentVersion\AppContainer\Mappings</code></pre>]]></content>
+    <title>Markdown扩展语法</title>
+    <url>/c677b245.html</url>
+    <content><![CDATA[<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>本文章主要介绍Markdown的扩展语法，如果对Markdown语法还不了解，请查看<a href="https://skmonet.com/other/5c98fe12.html">Markdown基础语法</a>。</p>
+<h1 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h1><p>添加表格，使用三个或多个连字符（—）创建各列的标题，使用管道（|）分隔各列。</p>
+<table>
+<thead>
+<tr>
+<th>表头一</th>
+<th>表头二</th>
+<th>表头三</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>第一行</td>
+<td>apple</td>
+<td>banana</td>
+</tr>
+<tr>
+<td>第二行</td>
+<td>milk</td>
+<td>coffee</td>
+</tr>
+<tr>
+<td>第三行</td>
+<td>americano</td>
+<td>espresso</td>
+</tr>
+</tbody></table>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">| 表头一 | 表头二 | 表头三 |</span><br><span class="line">| --- | --- | --- |</span><br><span class="line">|第一行|apple|banana|</span><br><span class="line">|第二行|milk|coffee|</span><br><span class="line">|第三行|americano|espresso|</span><br></pre></td></tr></table></figure>
+<h2 id="对齐"><a href="#对齐" class="headerlink" title="对齐"></a>对齐</h2><p>默认表格中的元素都是左对齐，改变对其方式使用冒号（:）；</p>
+<p>:—左对齐，—:右对齐，:—:居中对齐。<br>| 表头一 | 表头二 | 表头三 |<br>| — | —: | :—: |<br>|第一行|apple|banana|<br>|第二行|milk|coffee|<br>|第三行|americano|espresso|</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">| 表头一 | 表头二 | 表头三 |</span><br><span class="line">| --- | ---: | :---: |</span><br><span class="line">|第一行|apple|banana|</span><br><span class="line">|第二行|milk|coffee|</span><br><span class="line">|第三行|americano|espresso|</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h1><p>在基础语法中提到，使用缩进或者制表符可以作为代码块；还可以使用三个反引号（`）或者（~）。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">print(&#39;Hello World!&#39;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="语法高亮"><a href="#语法高亮" class="headerlink" title="语法高亮"></a>语法高亮</h2><p>在代码块第一排反引号后面可以添加语言标识，这样可以让代码块内部的代码以高亮显示。</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"firstName"</span>: <span class="string">"John"</span>,</span><br><span class="line">  <span class="attr">"lastName"</span>: <span class="string">"Smith"</span>,</span><br><span class="line">  <span class="attr">"age"</span>: <span class="number">25</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">with</span> open(<span class="string">'text.txt'</span>,encoding=<span class="string">'utf-8'</span>,mode=r) <span class="keyword">as</span> file1:</span><br><span class="line">    data = file1.readlines()</span><br><span class="line">    print(data)</span><br></pre></td></tr></table></figure>
+
+<h1 id="连接到标题ID"><a href="#连接到标题ID" class="headerlink" title="连接到标题ID"></a>连接到标题ID</h1><p>通过<code>[描述](#标题名称)</code>建立一个标题连接，点击可以直接跳转到指定的标题部分。</p>
+<p>跳转到<a href="#表格">表格</a>。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">跳转到[表格](#表格)。</span><br></pre></td></tr></table></figure>
+<h1 id="删除线"><a href="#删除线" class="headerlink" title="删除线"></a>删除线</h1><p>要添加删除线，在文本两端添加两个波浪线（~）。</p>
+<p><del>这个要删除</del>，这个不要删除。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">~~这个要删除~~，这个不要删除。</span><br></pre></td></tr></table></figure>
+
+<h1 id="任务清单"><a href="#任务清单" class="headerlink" title="任务清单"></a>任务清单</h1><p>创建带有复选框的列表清单，在列表内容前添加方括号（[]）；方括号内为空表示未选择，“X”表示已选。</p>
+<ul>
+<li><input checked="" disabled="" type="checkbox"> 第一项</li>
+<li><input disabled="" type="checkbox"> 第二项</li>
+<li><input checked="" disabled="" type="checkbox"> 第一项</li>
+</ul>
+<blockquote>
+<p>不是所有的Markdown程序都支持任务清单语法。</p>
+</blockquote>
+<h1 id="Emoji"><a href="#Emoji" class="headerlink" title="Emoji"></a>Emoji</h1><p>将表情符号添加到Markdown文件的方法有两种：将表情符号复制并粘贴到Markdown格式的文本中，或键入表情符号短代码。</p>
+<p>😃😃😃</p>
+<p>一些Markdown应用程序允许通过键入表情符号短代码来插入表情符号。这些以冒号开头和结尾，并包含表情符号的名称。</p>
+<p>Gone camping! :tent: Be back soon.<br>That is so funny! :joy:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Gone camping! :tent: Be back soon.</span><br><span class="line">That is so funny! :joy:</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>不是所有的Markdown程序都支持Emoji。</p>
+</blockquote>
+<h1 id="自动连接转换"><a href="#自动连接转换" class="headerlink" title="自动连接转换"></a>自动连接转换</h1><p>一般Markdown程序会自动将URL转成连接形式，即使不使用尖角号（&lt;&gt;）,<br>例如：<a href="https://skmonet.com">https://skmonet.com</a></p>
+<p>如果想禁用自动连接转换，使用单引号将连接引起来即可。<br><code>https://skmonet.com</code></p>
+]]></content>
       <categories>
         <category>other</category>
       </categories>
       <tags>
-        <tag>uwp</tag>
+        <tag>markdown</tag>
       </tags>
   </entry>
 </search>

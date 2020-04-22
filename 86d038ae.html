@@ -93,7 +93,7 @@ ga('send', 'pageview');
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">728</span>
+            <span class="post-count">718</span>
         </span>
     </span>
 
@@ -134,9 +134,9 @@ ga('send', 'pageview');
 <li>SQL Server Management Studio<a href="https://aka.ms/ssmsfullsetup" title="SQL Server Management Studio">下载</a></li>
 <li>IM and Presence Service 12.5(1)SU2</li>
 </ul>
-<h1 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h1><h2 id="安装SQL-Server"><a href="#安装SQL-Server" class="headerlink" title="安装SQL Server"></a>安装SQL Server</h2><p>在安装之前关闭Windows防火墙，安装时，关闭Machine Learning Services其他选项默认即可。</p>
-<p><img src="https://pic.downk.cc/item/5e9fd1d3c2a9a83be54a992c.png" alt="turn off firewall"></p>
+<h1 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h1><h2 id="安装SQL-Server"><a href="#安装SQL-Server" class="headerlink" title="安装SQL Server"></a>安装SQL Server</h2><p>在安装之前关闭Windows防火墙，安装时关闭Machine Learning Services其他选项默认即可。</p>
 <p><img src="https://pic.downk.cc/item/5e9fd1d3c2a9a83be54a9931.png" alt="turn off MLS"></p>
+<p><img src="https://pic.downk.cc/item/5e9fd1d3c2a9a83be54a992c.png" alt="turn off firewall"></p>
 <h2 id="安装SQL-Server-Management-Studio"><a href="#安装SQL-Server-Management-Studio" class="headerlink" title="安装SQL Server Management Studio"></a>安装SQL Server Management Studio</h2><p>按照提示默认安装即可。</p>
 <p><img src="https://pic.downk.cc/item/5e9fd4d6c2a9a83be54ccebf.png" alt="SSMS"></p>
 <h2 id="配置SQL-Server"><a href="#配置SQL-Server" class="headerlink" title="配置SQL Server"></a>配置SQL Server</h2><h3 id="创建一个新的Microsoft-SQL-Server数据库"><a href="#创建一个新的Microsoft-SQL-Server数据库" class="headerlink" title="创建一个新的Microsoft SQL Server数据库"></a>创建一个新的Microsoft SQL Server数据库</h3><ol>
@@ -188,20 +188,18 @@ ga('send', 'pageview');
 </li>
 <li><p>修改如下配置；</p>
 <p> <img src="https://pic.downk.cc/item/5e9febb4c2a9a83be55e444a.png" alt="new user"></p>
-<p> <img src="https://pic.downk.cc/item/5e9febb4c2a9a83be55e444d.png" alt="new user"></p>
-<p> <img src="https://pic.downk.cc/item/5e9febb4c2a9a83be55e4451.png" alt="new user"></p>
 <blockquote>
 <p>此处不要勾选”Enforce password expiration”。</p>
 </blockquote>
+<p> <img src="https://pic.downk.cc/item/5e9febb4c2a9a83be55e444d.png" alt="new user"></p>
+<p> <img src="https://pic.downk.cc/item/5e9febb4c2a9a83be55e4451.png" alt="new user"></p>
 </li>
 </ol>
 <h3 id="配置数据库用户所有者权限"><a href="#配置数据库用户所有者权限" class="headerlink" title="配置数据库用户所有者权限"></a>配置数据库用户所有者权限</h3><p>将Microsoft SQL数据库的所有权授予数据库用户。</p>
 <ol>
-<li><p>登录Microsoft SQL Server Management Studio，转到Security，右键Login，选择New Login。</p>
+<li><p>登录Microsoft SQL Server Management Studio，转到Database &gt; Security &gt; Users，右键上一步创建的用户，选择Properties；</p>
 </li>
-<li><p>转到Database &gt; Security &gt; Users，右键上一步创建的用户，选择Properties；</p>
-</li>
-<li><p>选择Membership，在右侧勾选db_owner，保存。</p>
+<li><p>选择Membership，在Role Members中勾选db_owner，保存。</p>
 <p> <img src="https://pic.downk.cc/item/5e9febdbc2a9a83be55e5b3d.png" alt="db owner"></p>
 </li>
 </ol>
