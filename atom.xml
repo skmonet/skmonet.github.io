@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://skmonet.com/"/>
-  <updated>2020-05-06T14:38:20.000Z</updated>
+  <updated>2020-05-06T14:41:32.000Z</updated>
   <id>http://skmonet.com/</id>
   
   <author>
@@ -17,20 +17,19 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>第三方话机注册</title>
+    <title>第三方SIP话机注册</title>
     <link href="http://skmonet.com/a62c0334.html"/>
     <id>http://skmonet.com/a62c0334.html</id>
     <published>2020-05-06T14:26:38.000Z</published>
-    <updated>2020-05-06T14:38:20.000Z</updated>
+    <updated>2020-05-06T14:41:32.000Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>本文简要介绍如何在CUCM中注册第三方非Cisco话机，以Alcatel、avaya、Yealink以及x-lite软电话为例。</p><h1 id="CUCM配置"><a href="#CUCM配置" class="headerlink" title="CUCM配置"></a>CUCM配置</h1><ol><li><p>在CUCM中，新建一个启用Digest Authentication的Phone Security Profile；<br><img src="https://pic.downk.cc/item/5eb2ca3bc2a9a83be54fdf5a.png" alt="cucm-config"></p></li><li><p>建立End User，并且一定要配置Digest Credentials；<br><img src="https://pic.downk.cc/item/5eb2ca81c2a9a83be55032d2.png" alt="cucm-config"></p></li><li><p>建立Third-party SIP Device；分配一个Digest User；<br><img src="https://pic.downk.cc/item/5eb2cad8c2a9a83be5508d5b.png" alt="cucm-config"></p></li></ol><h1 id="第三方SIP终端配置"><a href="#第三方SIP终端配置" class="headerlink" title="第三方SIP终端配置"></a>第三方SIP终端配置</h1><h2 id="Alcatel（阿尔卡特）"><a href="#Alcatel（阿尔卡特）" class="headerlink" title="Alcatel（阿尔卡特）"></a>Alcatel（阿尔卡特）</h2><p><img src="https://pic.downk.cc/item/5eb2cb21c2a9a83be550d5d9.png" alt="alcatel"></p><h2 id="Avaya"><a href="#Avaya" class="headerlink" title="Avaya"></a>Avaya</h2><p><img src="https://pic.downk.cc/item/5eb2cb47c2a9a83be550fb5a.png" alt="avaya"></p><h2 id="Yealink（亿联）"><a href="#Yealink（亿联）" class="headerlink" title="Yealink（亿联）"></a>Yealink（亿联）</h2><p><img src="https://pic.downk.cc/item/5eb2cb6ec2a9a83be5511fe2.png" alt="yealink"></p><h2 id="X-LITE-Softphone"><a href="#X-LITE-Softphone" class="headerlink" title="X-LITE Softphone"></a>X-LITE Softphone</h2><p><img src="https://pic.downk.cc/item/5eb2cba5c2a9a83be551540b.png" alt="x-lite-1"><br><img src="https://pic.downk.cc/item/5eb2cba5c2a9a83be551540d.png" alt="x-lite-2"></p>]]></content>
+    <content type="html"><![CDATA[<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>本文简要介绍如何在CUCM中注册第三方非Cisco SIP话机，介绍Alcatel、avaya、Yealink、x-lite电话的配置。</p><h1 id="CUCM配置"><a href="#CUCM配置" class="headerlink" title="CUCM配置"></a>CUCM配置</h1><ol><li><p>在CUCM中，新建一个启用Digest Authentication的Phone Security Profile；<br><img src="https://pic.downk.cc/item/5eb2ca3bc2a9a83be54fdf5a.png" alt="cucm-config"></p></li><li><p>建立End User，并且一定要配置Digest Credentials；<br><img src="https://pic.downk.cc/item/5eb2ca81c2a9a83be55032d2.png" alt="cucm-config"></p></li><li><p>建立Third-party SIP Device；分配一个Digest User；<br><img src="https://pic.downk.cc/item/5eb2cad8c2a9a83be5508d5b.png" alt="cucm-config"></p></li></ol><h1 id="第三方SIP终端配置"><a href="#第三方SIP终端配置" class="headerlink" title="第三方SIP终端配置"></a>第三方SIP终端配置</h1><h2 id="Alcatel（阿尔卡特）"><a href="#Alcatel（阿尔卡特）" class="headerlink" title="Alcatel（阿尔卡特）"></a>Alcatel（阿尔卡特）</h2><p><img src="https://pic.downk.cc/item/5eb2cb21c2a9a83be550d5d9.png" alt="alcatel"></p><h2 id="Avaya"><a href="#Avaya" class="headerlink" title="Avaya"></a>Avaya</h2><p><img src="https://pic.downk.cc/item/5eb2cb47c2a9a83be550fb5a.png" alt="avaya"></p><h2 id="Yealink（亿联）"><a href="#Yealink（亿联）" class="headerlink" title="Yealink（亿联）"></a>Yealink（亿联）</h2><p><img src="https://pic.downk.cc/item/5eb2cb6ec2a9a83be5511fe2.png" alt="yealink"></p><h2 id="X-LITE-Softphone"><a href="#X-LITE-Softphone" class="headerlink" title="X-LITE Softphone"></a>X-LITE Softphone</h2><p><img src="https://pic.downk.cc/item/5eb2cba5c2a9a83be551540b.png" alt="x-lite-1"><br><img src="https://pic.downk.cc/item/5eb2cba5c2a9a83be551540d.png" alt="x-lite-2"></p>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;h1 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h1&gt;&lt;p&gt;本文简要介绍如何在CUCM中注册第三方非Cisco话机，以Alcatel、avaya、Yealink以及x-lite软电话为例。&lt;/p&gt;
-&lt;
+        &lt;h1 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h1&gt;&lt;p&gt;本文简要介绍如何在CUCM中注册第三方非Cisco SIP话机，介绍Alcatel、avaya、Yealink、x-lite电话的配置。&lt;/
       
     
     </summary>
